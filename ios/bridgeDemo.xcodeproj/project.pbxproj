@@ -1,0 +1,752 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		572DFCA522EAA42D00D4B030 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFCA422EAA42D00D4B030 /* AppDelegate.m */; };
+		572DFCA822EAA42D00D4B030 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFCA722EAA42D00D4B030 /* ViewController.m */; };
+		572DFCAB22EAA42D00D4B030 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 572DFCA922EAA42D00D4B030 /* Main.storyboard */; };
+		572DFCAD22EAA42D00D4B030 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 572DFCAC22EAA42D00D4B030 /* Assets.xcassets */; };
+		572DFCB022EAA42D00D4B030 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 572DFCAE22EAA42D00D4B030 /* LaunchScreen.storyboard */; };
+		572DFCB322EAA42D00D4B030 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFCB222EAA42D00D4B030 /* main.m */; };
+		572DFCBD22EAA42E00D4B030 /* bridgeDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFCBC22EAA42E00D4B030 /* bridgeDemoTests.m */; };
+		572DFCC822EAA42E00D4B030 /* bridgeDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFCC722EAA42E00D4B030 /* bridgeDemoUITests.m */; };
+		572DFCD722EAA53D00D4B030 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFCD622EAA53D00D4B030 /* Person.m */; };
+		572DFCD922EACCB700D4B030 /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = 572DFCD822EACCB700D4B030 /* test.html */; };
+		572DFCDC22EACF7400D4B030 /* MyDataBaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFCDB22EACF7400D4B030 /* MyDataBaseTest.m */; };
+		572DFCDF22EADB2700D4B030 /* MyLocationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFCDE22EADB2700D4B030 /* MyLocationTest.m */; };
+		572DFCE522EAE92800D4B030 /* ViewController+Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFCE422EAE92800D4B030 /* ViewController+Photo.m */; };
+		572DFCE922EAFCBA00D4B030 /* DataBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFCE822EAFCBA00D4B030 /* DataBaseTableViewController.m */; };
+		9680502D43B9780551EC91F1 /* Pods_bridgeDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 028BAAC921FE918E76E72479 /* Pods_bridgeDemoTests.framework */; };
+		A6E7B457F067A4FEF6895B52 /* Pods_bridgeDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5B4D425295524194C86DBB /* Pods_bridgeDemo.framework */; };
+		B040B9B34542839322AC42CD /* Pods_bridgeDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD9322D3D6B5EF779B92FCC /* Pods_bridgeDemoUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		572DFCB922EAA42E00D4B030 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 572DFC9822EAA42D00D4B030 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 572DFC9F22EAA42D00D4B030;
+			remoteInfo = bridgeDemo;
+		};
+		572DFCC422EAA42E00D4B030 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 572DFC9822EAA42D00D4B030 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 572DFC9F22EAA42D00D4B030;
+			remoteInfo = bridgeDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		028BAAC921FE918E76E72479 /* Pods_bridgeDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bridgeDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B5B4D425295524194C86DBB /* Pods_bridgeDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bridgeDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DD9322D3D6B5EF779B92FCC /* Pods_bridgeDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bridgeDemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5363B6E7180BF90DF41772A4 /* Pods-bridgeDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bridgeDemoTests.debug.xcconfig"; path = "Target Support Files/Pods-bridgeDemoTests/Pods-bridgeDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		572DFCA022EAA42D00D4B030 /* bridgeDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bridgeDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		572DFCA322EAA42D00D4B030 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		572DFCA422EAA42D00D4B030 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		572DFCA622EAA42D00D4B030 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		572DFCA722EAA42D00D4B030 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		572DFCAA22EAA42D00D4B030 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		572DFCAC22EAA42D00D4B030 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		572DFCAF22EAA42D00D4B030 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		572DFCB122EAA42D00D4B030 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		572DFCB222EAA42D00D4B030 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		572DFCB822EAA42E00D4B030 /* bridgeDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bridgeDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		572DFCBC22EAA42E00D4B030 /* bridgeDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bridgeDemoTests.m; sourceTree = "<group>"; };
+		572DFCBE22EAA42E00D4B030 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		572DFCC322EAA42E00D4B030 /* bridgeDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bridgeDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		572DFCC722EAA42E00D4B030 /* bridgeDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bridgeDemoUITests.m; sourceTree = "<group>"; };
+		572DFCC922EAA42E00D4B030 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		572DFCD522EAA53D00D4B030 /* Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		572DFCD622EAA53D00D4B030 /* Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		572DFCD822EACCB700D4B030 /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
+		572DFCDA22EACF7400D4B030 /* MyDataBaseTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyDataBaseTest.h; sourceTree = "<group>"; };
+		572DFCDB22EACF7400D4B030 /* MyDataBaseTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyDataBaseTest.m; sourceTree = "<group>"; };
+		572DFCDD22EADB2700D4B030 /* MyLocationTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyLocationTest.h; sourceTree = "<group>"; };
+		572DFCDE22EADB2700D4B030 /* MyLocationTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyLocationTest.m; sourceTree = "<group>"; };
+		572DFCE322EAE92800D4B030 /* ViewController+Photo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ViewController+Photo.h"; sourceTree = "<group>"; };
+		572DFCE422EAE92800D4B030 /* ViewController+Photo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ViewController+Photo.m"; sourceTree = "<group>"; };
+		572DFCE722EAFCBA00D4B030 /* DataBaseTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataBaseTableViewController.h; sourceTree = "<group>"; };
+		572DFCE822EAFCBA00D4B030 /* DataBaseTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataBaseTableViewController.m; sourceTree = "<group>"; };
+		A73F29DDD6E6D401DD721AEA /* Pods-bridgeDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bridgeDemoUITests.debug.xcconfig"; path = "Target Support Files/Pods-bridgeDemoUITests/Pods-bridgeDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C0B67F3DAEC870CDD0623837 /* Pods-bridgeDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bridgeDemoUITests.release.xcconfig"; path = "Target Support Files/Pods-bridgeDemoUITests/Pods-bridgeDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		DCFF665FF3D5FC29EF780C89 /* Pods-bridgeDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bridgeDemo.debug.xcconfig"; path = "Target Support Files/Pods-bridgeDemo/Pods-bridgeDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		F3B5FDE571CF986C225BC559 /* Pods-bridgeDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bridgeDemo.release.xcconfig"; path = "Target Support Files/Pods-bridgeDemo/Pods-bridgeDemo.release.xcconfig"; sourceTree = "<group>"; };
+		F78BF9A585656E25EE191746 /* Pods-bridgeDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bridgeDemoTests.release.xcconfig"; path = "Target Support Files/Pods-bridgeDemoTests/Pods-bridgeDemoTests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		572DFC9D22EAA42D00D4B030 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6E7B457F067A4FEF6895B52 /* Pods_bridgeDemo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		572DFCB522EAA42E00D4B030 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9680502D43B9780551EC91F1 /* Pods_bridgeDemoTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		572DFCC022EAA42E00D4B030 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B040B9B34542839322AC42CD /* Pods_bridgeDemoUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		572DFC9722EAA42D00D4B030 = {
+			isa = PBXGroup;
+			children = (
+				572DFCA222EAA42D00D4B030 /* bridgeDemo */,
+				572DFCBB22EAA42E00D4B030 /* bridgeDemoTests */,
+				572DFCC622EAA42E00D4B030 /* bridgeDemoUITests */,
+				572DFCA122EAA42D00D4B030 /* Products */,
+				EB573CE35D36D17A9F7B9178 /* Pods */,
+				A5913706F5A33910E450783F /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		572DFCA122EAA42D00D4B030 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				572DFCA022EAA42D00D4B030 /* bridgeDemo.app */,
+				572DFCB822EAA42E00D4B030 /* bridgeDemoTests.xctest */,
+				572DFCC322EAA42E00D4B030 /* bridgeDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		572DFCA222EAA42D00D4B030 /* bridgeDemo */ = {
+			isa = PBXGroup;
+			children = (
+				572DFCA322EAA42D00D4B030 /* AppDelegate.h */,
+				572DFCA422EAA42D00D4B030 /* AppDelegate.m */,
+				572DFCA622EAA42D00D4B030 /* ViewController.h */,
+				572DFCA722EAA42D00D4B030 /* ViewController.m */,
+				572DFCE322EAE92800D4B030 /* ViewController+Photo.h */,
+				572DFCE422EAE92800D4B030 /* ViewController+Photo.m */,
+				572DFCD522EAA53D00D4B030 /* Person.h */,
+				572DFCD622EAA53D00D4B030 /* Person.m */,
+				572DFCDA22EACF7400D4B030 /* MyDataBaseTest.h */,
+				572DFCDB22EACF7400D4B030 /* MyDataBaseTest.m */,
+				572DFCDD22EADB2700D4B030 /* MyLocationTest.h */,
+				572DFCDE22EADB2700D4B030 /* MyLocationTest.m */,
+				572DFCE722EAFCBA00D4B030 /* DataBaseTableViewController.h */,
+				572DFCE822EAFCBA00D4B030 /* DataBaseTableViewController.m */,
+				572DFCD822EACCB700D4B030 /* test.html */,
+				572DFCA922EAA42D00D4B030 /* Main.storyboard */,
+				572DFCAC22EAA42D00D4B030 /* Assets.xcassets */,
+				572DFCAE22EAA42D00D4B030 /* LaunchScreen.storyboard */,
+				572DFCB122EAA42D00D4B030 /* Info.plist */,
+				572DFCB222EAA42D00D4B030 /* main.m */,
+			);
+			path = bridgeDemo;
+			sourceTree = "<group>";
+		};
+		572DFCBB22EAA42E00D4B030 /* bridgeDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				572DFCBC22EAA42E00D4B030 /* bridgeDemoTests.m */,
+				572DFCBE22EAA42E00D4B030 /* Info.plist */,
+			);
+			path = bridgeDemoTests;
+			sourceTree = "<group>";
+		};
+		572DFCC622EAA42E00D4B030 /* bridgeDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				572DFCC722EAA42E00D4B030 /* bridgeDemoUITests.m */,
+				572DFCC922EAA42E00D4B030 /* Info.plist */,
+			);
+			path = bridgeDemoUITests;
+			sourceTree = "<group>";
+		};
+		A5913706F5A33910E450783F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1B5B4D425295524194C86DBB /* Pods_bridgeDemo.framework */,
+				028BAAC921FE918E76E72479 /* Pods_bridgeDemoTests.framework */,
+				2DD9322D3D6B5EF779B92FCC /* Pods_bridgeDemoUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EB573CE35D36D17A9F7B9178 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DCFF665FF3D5FC29EF780C89 /* Pods-bridgeDemo.debug.xcconfig */,
+				F3B5FDE571CF986C225BC559 /* Pods-bridgeDemo.release.xcconfig */,
+				5363B6E7180BF90DF41772A4 /* Pods-bridgeDemoTests.debug.xcconfig */,
+				F78BF9A585656E25EE191746 /* Pods-bridgeDemoTests.release.xcconfig */,
+				A73F29DDD6E6D401DD721AEA /* Pods-bridgeDemoUITests.debug.xcconfig */,
+				C0B67F3DAEC870CDD0623837 /* Pods-bridgeDemoUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		572DFC9F22EAA42D00D4B030 /* bridgeDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 572DFCCC22EAA42E00D4B030 /* Build configuration list for PBXNativeTarget "bridgeDemo" */;
+			buildPhases = (
+				BA9D87459020432895C17D0E /* [CP] Check Pods Manifest.lock */,
+				572DFC9C22EAA42D00D4B030 /* Sources */,
+				572DFC9D22EAA42D00D4B030 /* Frameworks */,
+				572DFC9E22EAA42D00D4B030 /* Resources */,
+				2BC6275D88269E71F01F9CCE /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = bridgeDemo;
+			productName = bridgeDemo;
+			productReference = 572DFCA022EAA42D00D4B030 /* bridgeDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		572DFCB722EAA42E00D4B030 /* bridgeDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 572DFCCF22EAA42E00D4B030 /* Build configuration list for PBXNativeTarget "bridgeDemoTests" */;
+			buildPhases = (
+				D88A0788E9489416805BB711 /* [CP] Check Pods Manifest.lock */,
+				572DFCB422EAA42E00D4B030 /* Sources */,
+				572DFCB522EAA42E00D4B030 /* Frameworks */,
+				572DFCB622EAA42E00D4B030 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				572DFCBA22EAA42E00D4B030 /* PBXTargetDependency */,
+			);
+			name = bridgeDemoTests;
+			productName = bridgeDemoTests;
+			productReference = 572DFCB822EAA42E00D4B030 /* bridgeDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		572DFCC222EAA42E00D4B030 /* bridgeDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 572DFCD222EAA42E00D4B030 /* Build configuration list for PBXNativeTarget "bridgeDemoUITests" */;
+			buildPhases = (
+				A697E4F70E7CFFE0DB91FD79 /* [CP] Check Pods Manifest.lock */,
+				572DFCBF22EAA42E00D4B030 /* Sources */,
+				572DFCC022EAA42E00D4B030 /* Frameworks */,
+				572DFCC122EAA42E00D4B030 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				572DFCC522EAA42E00D4B030 /* PBXTargetDependency */,
+			);
+			name = bridgeDemoUITests;
+			productName = bridgeDemoUITests;
+			productReference = 572DFCC322EAA42E00D4B030 /* bridgeDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		572DFC9822EAA42D00D4B030 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = duanfeng;
+				TargetAttributes = {
+					572DFC9F22EAA42D00D4B030 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					572DFCB722EAA42E00D4B030 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 572DFC9F22EAA42D00D4B030;
+					};
+					572DFCC222EAA42E00D4B030 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 572DFC9F22EAA42D00D4B030;
+					};
+				};
+			};
+			buildConfigurationList = 572DFC9B22EAA42D00D4B030 /* Build configuration list for PBXProject "bridgeDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 572DFC9722EAA42D00D4B030;
+			productRefGroup = 572DFCA122EAA42D00D4B030 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				572DFC9F22EAA42D00D4B030 /* bridgeDemo */,
+				572DFCB722EAA42E00D4B030 /* bridgeDemoTests */,
+				572DFCC222EAA42E00D4B030 /* bridgeDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		572DFC9E22EAA42D00D4B030 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				572DFCD922EACCB700D4B030 /* test.html in Resources */,
+				572DFCB022EAA42D00D4B030 /* LaunchScreen.storyboard in Resources */,
+				572DFCAD22EAA42D00D4B030 /* Assets.xcassets in Resources */,
+				572DFCAB22EAA42D00D4B030 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		572DFCB622EAA42E00D4B030 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		572DFCC122EAA42E00D4B030 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2BC6275D88269E71F01F9CCE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-bridgeDemo/Pods-bridgeDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-bridgeDemo/Pods-bridgeDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-bridgeDemo/Pods-bridgeDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A697E4F70E7CFFE0DB91FD79 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-bridgeDemoUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BA9D87459020432895C17D0E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-bridgeDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D88A0788E9489416805BB711 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-bridgeDemoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		572DFC9C22EAA42D00D4B030 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				572DFCDC22EACF7400D4B030 /* MyDataBaseTest.m in Sources */,
+				572DFCA822EAA42D00D4B030 /* ViewController.m in Sources */,
+				572DFCB322EAA42D00D4B030 /* main.m in Sources */,
+				572DFCD722EAA53D00D4B030 /* Person.m in Sources */,
+				572DFCE922EAFCBA00D4B030 /* DataBaseTableViewController.m in Sources */,
+				572DFCE522EAE92800D4B030 /* ViewController+Photo.m in Sources */,
+				572DFCDF22EADB2700D4B030 /* MyLocationTest.m in Sources */,
+				572DFCA522EAA42D00D4B030 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		572DFCB422EAA42E00D4B030 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				572DFCBD22EAA42E00D4B030 /* bridgeDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		572DFCBF22EAA42E00D4B030 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				572DFCC822EAA42E00D4B030 /* bridgeDemoUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		572DFCBA22EAA42E00D4B030 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 572DFC9F22EAA42D00D4B030 /* bridgeDemo */;
+			targetProxy = 572DFCB922EAA42E00D4B030 /* PBXContainerItemProxy */;
+		};
+		572DFCC522EAA42E00D4B030 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 572DFC9F22EAA42D00D4B030 /* bridgeDemo */;
+			targetProxy = 572DFCC422EAA42E00D4B030 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		572DFCA922EAA42D00D4B030 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				572DFCAA22EAA42D00D4B030 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		572DFCAE22EAA42D00D4B030 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				572DFCAF22EAA42D00D4B030 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		572DFCCA22EAA42E00D4B030 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		572DFCCB22EAA42E00D4B030 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		572DFCCD22EAA42E00D4B030 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DCFF665FF3D5FC29EF780C89 /* Pods-bridgeDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q84SWQ3M6P;
+				INFOPLIST_FILE = bridgeDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = wlkenfwf.lsndkfsd;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		572DFCCE22EAA42E00D4B030 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F3B5FDE571CF986C225BC559 /* Pods-bridgeDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q84SWQ3M6P;
+				INFOPLIST_FILE = bridgeDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = wlkenfwf.lsndkfsd;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		572DFCD022EAA42E00D4B030 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5363B6E7180BF90DF41772A4 /* Pods-bridgeDemoTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = bridgeDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = duanfeng.bridgeDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bridgeDemo.app/bridgeDemo";
+			};
+			name = Debug;
+		};
+		572DFCD122EAA42E00D4B030 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F78BF9A585656E25EE191746 /* Pods-bridgeDemoTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = bridgeDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = duanfeng.bridgeDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bridgeDemo.app/bridgeDemo";
+			};
+			name = Release;
+		};
+		572DFCD322EAA42E00D4B030 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A73F29DDD6E6D401DD721AEA /* Pods-bridgeDemoUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = bridgeDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = duanfeng.bridgeDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = bridgeDemo;
+			};
+			name = Debug;
+		};
+		572DFCD422EAA42E00D4B030 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0B67F3DAEC870CDD0623837 /* Pods-bridgeDemoUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = bridgeDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = duanfeng.bridgeDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = bridgeDemo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		572DFC9B22EAA42D00D4B030 /* Build configuration list for PBXProject "bridgeDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				572DFCCA22EAA42E00D4B030 /* Debug */,
+				572DFCCB22EAA42E00D4B030 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		572DFCCC22EAA42E00D4B030 /* Build configuration list for PBXNativeTarget "bridgeDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				572DFCCD22EAA42E00D4B030 /* Debug */,
+				572DFCCE22EAA42E00D4B030 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		572DFCCF22EAA42E00D4B030 /* Build configuration list for PBXNativeTarget "bridgeDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				572DFCD022EAA42E00D4B030 /* Debug */,
+				572DFCD122EAA42E00D4B030 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		572DFCD222EAA42E00D4B030 /* Build configuration list for PBXNativeTarget "bridgeDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				572DFCD322EAA42E00D4B030 /* Debug */,
+				572DFCD422EAA42E00D4B030 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 572DFC9822EAA42D00D4B030 /* Project object */;
+}
