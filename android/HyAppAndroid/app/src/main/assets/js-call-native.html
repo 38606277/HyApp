@@ -10,6 +10,7 @@
     <!--<script src="https://cdn.jsdelivr.net/npm/dsbridge/dist/dsbridge.js"> </script>-->
     <script src="./dsbridge.js"> </script>
     <script src="./vue.js"></script>
+
 </head>
 <style>
     .btn {
@@ -44,7 +45,7 @@
 <body>
 
 <div id="app">
-
+    <div  class="btn" onclick="takePhoto()">拍照</div>
     <div id="qrCodeBtn" class="btn" onclick="scanQrCode()">扫描二维码</div>
 
     <input id="qrCodeET" class="editText" v-model="message" placeholder="edit me">
@@ -52,6 +53,10 @@
 </div>
 
 <script>
+ function takePhoto(){
+          dsBridge.call("takePhoto","二维码扫描")
+   }
+
    function scanQrCode(){
           dsBridge.call("scanQrCode","二维码扫描",function (value) {
             //alert(value)
@@ -60,7 +65,7 @@
    }
 </script>
 
+<script src="./index.js"/>
 
-<script src="index.js"></script>
 </body>
 </html>
