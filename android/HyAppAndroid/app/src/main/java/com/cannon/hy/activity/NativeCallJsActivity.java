@@ -1,10 +1,12 @@
-package com.cannon.hy;
+package com.cannon.hy.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
+import com.cannon.hy.R;
 
 import org.json.JSONObject;
 

@@ -1,10 +1,18 @@
-package com.cannon.hy;
+package com.cannon.hy.activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
+
+import com.cannon.hy.R;
+import com.google.zxing.integration.android.IntentIntegrator;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +27,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void jsCallNative(View view) {
-        startActivity(new Intent(this,JsCallNativeActivity.class));
+        startActivity(new Intent(this, JsCallNativeActivity.class));
     }
+
+
+
+
 }

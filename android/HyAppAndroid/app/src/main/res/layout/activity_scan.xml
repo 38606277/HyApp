@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activity.ScanActivity$JsCallNativeActivity"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-
-    <wendu.dsbridge.DWebView
-        android:id="@+id/webview"
+    <com.journeyapps.barcodescanner.DecoratedBarcodeView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        />
-
-
+        android:id="@+id/zxing_barcode_scanner"
+        app:zxing_preview_scaling_strategy="centerCrop"
+        app:zxing_use_texture_view="false"/>
 
 </LinearLayout>

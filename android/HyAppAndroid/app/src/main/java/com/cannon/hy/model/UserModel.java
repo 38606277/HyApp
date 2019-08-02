@@ -1,4 +1,4 @@
-package com.cannon.hy;
+package com.cannon.hy.model;
 
 public class UserModel {
     public String name;

@@ -2,12 +2,11 @@ package com.cannon.hy.api;
 
 import android.content.Context;
 import android.webkit.JavascriptInterface;
-import android.widget.Toast;
 
-import com.cannon.hy.UserModel;
+import com.cannon.hy.model.UserModel;
+import com.cannon.hy.utils.JsonUtils;
 
 import wendu.dsbridge.CompletionHandler;
-import wendu.dsbridge.OnReturnValue;
 
 public class UserApi {
     private Context mContext;
@@ -22,13 +21,15 @@ public class UserApi {
     }
 
     @JavascriptInterface
-    public void callBack(final Object content,final CompletionHandler<UserModel> handler){
+    public void callBack(final Object content,final CompletionHandler<String> handler){
         final UserModel userModel = new UserModel();
         userModel.setName(String.valueOf(content));
+
+
         new Thread(new Runnable() {
             @Override
             public void run() {
-                handler.complete(userModel);
+                handler.complete(JsonUtils.toJson(userModel));
             }
         }).start();
     }

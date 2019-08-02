@@ -9,6 +9,7 @@
     <!--require dsbridge init js-->
     <!--<script src="https://cdn.jsdelivr.net/npm/dsbridge/dist/dsbridge.js"> </script>-->
     <script src="./dsbridge.js"> </script>
+    <script src="./vue.js"></script>
 </head>
 <style>
     .btn {
@@ -27,23 +28,39 @@
         box-shadow: 4px 2px 10px #555;
     }
 
-</style>
-<body>
-<div class="btn" onclick="callSyn()">读取本地方法的用户名</div>
-<div class="btn" onclick="callBack()">三秒后函数回调</div>
-
-<script>
-  function callSyn() {
-        alert(dsBridge.call("user.getName", "9999"))
+    .editText{
+        display:block;
+        width: 80%;
+        color: #222;
+        padding: 20px;
+        margin: 30px;
+        font-size: 24px;
+        border-radius: 4px;
+        box-shadow: 4px 2px 10px #999;
+        text-align: center;
     }
 
-   function callBack(){
-          dsBridge.call("user.callBack","这里是函数的回调",function (value) {
-            alert(value.getName)
+</style>
+<body>
 
+<div id="app">
+
+    <div id="qrCodeBtn" class="btn" onclick="scanQrCode()">扫描二维码</div>
+
+    <input id="qrCodeET" class="editText" v-model="message" placeholder="edit me">
+    <p>扫描结果 : {{ message }}</p>
+</div>
+
+<script>
+   function scanQrCode(){
+          dsBridge.call("scanQrCode","二维码扫描",function (value) {
+            //alert(value)
+            document.getElementById("qrCodeET").value = (value);
         })
    }
-
 </script>
+
+
+<script src="index.js"></script>
 </body>
 </html>
