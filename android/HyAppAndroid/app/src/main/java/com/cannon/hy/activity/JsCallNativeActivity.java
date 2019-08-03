@@ -32,7 +32,9 @@ public class JsCallNativeActivity extends AppCompatActivity {
         DWebView.setWebContentsDebuggingEnabled(true);
         //mDWebView.addJavascriptObject(new UserApi(this), "user");
         mDWebView.addJavascriptObject(cameraApi = new CameraApi(this), "");
-        mDWebView.loadUrl("file:///android_asset/js-call-native.html");
+        mDWebView.loadUrl("file:///android_asset/dist/index.html");//js-call-native.html");
+
+        getSupportActionBar().hide();
     }
 
 
