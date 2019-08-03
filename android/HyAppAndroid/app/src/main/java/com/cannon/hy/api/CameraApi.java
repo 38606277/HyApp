@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 
+import com.cannon.hy.activity.CameraActivity;
 import com.cannon.hy.activity.JsCallNativeActivity;
 import com.cannon.hy.activity.ScanActivity;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -28,6 +29,11 @@ public class CameraApi {
         this.mContext = mContext;
     }
 
+    /**
+     * 扫描二维码
+     * @param obj
+     * @param completionHandler
+     */
     @JavascriptInterface
     public void scanQrCode(Object obj,CompletionHandler<String> completionHandler){
         if(ActivityCompat.checkSelfPermission(mContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
@@ -79,5 +85,17 @@ public class CameraApi {
         }
         return false;
     }
+
+    /**
+     * 拍照
+     * @param obj
+     */
+    @JavascriptInterface
+    public void takePhoto(Object obj){
+        mContext.startActivity(new Intent(mContext, CameraActivity.class));
+
+    }
+
+
 
 }

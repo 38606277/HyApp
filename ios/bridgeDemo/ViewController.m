@@ -13,11 +13,13 @@
 #import "MyDataBaseTest.h"
 #import <CoreLocation/CoreLocation.h>
 #import "ViewController+Photo.h"
+#import "MyQRCodeTools.h"
 
 @interface ViewController ()<WKUIDelegate,CLLocationManagerDelegate>
     
 @property (nonatomic, strong) CLLocationManager *locationManager;//设置manager
 @property (nonatomic, strong) NSString *currentCity;
+@property (nonatomic,strong) UIImageView *im;
 @end
 
 @implementation ViewController{
@@ -31,6 +33,16 @@
 //    [self wirteDB];
 ////    [self DBaddData];
 //    [self readDB];
+    UIImageView *im = [[UIImageView alloc]initWithFrame:CGRectMake(0, 400, 100, 100)];
+    im.contentMode = UIViewContentModeScaleAspectFill;
+    [self.view addSubview:im];
+    self.im = im;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showImage:) name:@"photo" object:nil];
+}
+
+- (void)showImage:(NSNotification *)noti{
+    UIImage *image = noti.object;
+    self.im.image = image;
 }
     
 - (void)requestLocation:(NSString *)msg :(JSCallback)completion{
@@ -54,6 +66,7 @@
     [dwebview addJavascriptObject:[[MyDataBaseTest alloc] init] namespace:@"database"];
     [dwebview addJavascriptObject:[[ViewController alloc] init] namespace:@"photo"];
     [dwebview addJavascriptObject:[[ViewController alloc] init] namespace:@"my"];
+    [dwebview addJavascriptObject:[[MyQRCodeTools alloc] init] namespace:@"QRCode"];
     // open debug mode, Release mode should disable this.
     [dwebview setDebugMode:true];
     
@@ -121,7 +134,11 @@
 //                self.currentCity = @"⟳定位获取失败,点击重试";
             } else {
                 self.currentCity = placeMark.locality ;//获取当前城市
-                
+                static dispatch_once_t onceToken;
+                dispatch_once(&onceToken, ^{
+                    UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"native" message:self.currentCity delegate:self cancelButtonTitle:@"cancle" otherButtonTitles:nil, nil];
+                    [av show];
+                });
             }
             
         } else if (error == nil && placemarks.count == 0 ) {
@@ -144,11 +161,6 @@
     }];
     NSLog(@"%@",[NSThread currentThread]);
     NSLog(@"321321312");
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"native" message:self.currentCity delegate:self cancelButtonTitle:@"cancle" otherButtonTitles:nil, nil];
-        [av show];
-    });
     
 }
 

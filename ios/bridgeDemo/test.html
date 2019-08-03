@@ -36,6 +36,7 @@
 <div class="btn" onclick="insertDB()">insertDB</div>
 <div class="btn" onclick="callSynSwift()">requestLocation</div>
 <div class="btn" onclick="photo()">photo</div>
+<!--<div class="btn" onclick="QRCode()">QRCode</div>-->
 <!--<div class="btn" onclick="callAsynSwift()">Async call(swift)</div>-->
 <!--<div class="btn" onclick="callNoArgSyn()">Sync call without argument</div>-->
 <!--<div class="btn" onclick="callNoArgAsyn()">Async call without argument</div>-->
@@ -77,6 +78,12 @@
     dsBridge.call("photo.photo","hello", function (v) {
             alert(v)
         })
+    }
+
+    function QRCode() {
+        dsBridge.call("QRCode.pushVC","hello", function (v) {
+                      alert(v)
+                      })
     }
 
 function callSynSwift() {

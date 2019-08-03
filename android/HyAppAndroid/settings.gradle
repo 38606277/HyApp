@@ -1,1 +1,1 @@
-include ':app', ':dsbridge'
+include ':app', ':dsbridge',":takephoto_library",":crop_library"

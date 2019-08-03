@@ -29,7 +29,6 @@
     NSString *sql = @"create table if not exists t_person ('identityCardID' INTEGER PRIMARY KEY,'name' TEXT NOT NULL, 'age' INTEGER,'score' INTEGER)";
     BOOL result = [db executeUpdate:sql];
     if (result) {
-//        NSLog(@"create table success");
         completion(@"create table success",YES);
     }else{
         completion(@"create table fail",NO);

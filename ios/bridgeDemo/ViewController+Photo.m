@@ -7,6 +7,7 @@
 //
 
 #import "ViewController+Photo.h"
+#import "ImageViewController.h"
 
 @interface ViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -63,7 +64,7 @@
     // 从info中将图片取出，并加载到imageView当中
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"photo" object:image];
 }
     
     // 取消选取调用的方法

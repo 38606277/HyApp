@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		571AB02122F3E0B400F986CA /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 571AB02022F3E0B400F986CA /* QRCodeViewController.m */; };
 		572DFCA522EAA42D00D4B030 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFCA422EAA42D00D4B030 /* AppDelegate.m */; };
 		572DFCA822EAA42D00D4B030 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFCA722EAA42D00D4B030 /* ViewController.m */; };
 		572DFCAB22EAA42D00D4B030 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 572DFCA922EAA42D00D4B030 /* Main.storyboard */; };
@@ -21,6 +22,8 @@
 		572DFCDF22EADB2700D4B030 /* MyLocationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFCDE22EADB2700D4B030 /* MyLocationTest.m */; };
 		572DFCE522EAE92800D4B030 /* ViewController+Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFCE422EAE92800D4B030 /* ViewController+Photo.m */; };
 		572DFCE922EAFCBA00D4B030 /* DataBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFCE822EAFCBA00D4B030 /* DataBaseTableViewController.m */; };
+		572DFD6D22F3DA2400D4B030 /* MyQRCodeTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFD6C22F3DA2400D4B030 /* MyQRCodeTools.m */; };
+		572DFD7022F3DB6A00D4B030 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFD6F22F3DB6A00D4B030 /* ImageViewController.m */; };
 		9680502D43B9780551EC91F1 /* Pods_bridgeDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 028BAAC921FE918E76E72479 /* Pods_bridgeDemoTests.framework */; };
 		A6E7B457F067A4FEF6895B52 /* Pods_bridgeDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5B4D425295524194C86DBB /* Pods_bridgeDemo.framework */; };
 		B040B9B34542839322AC42CD /* Pods_bridgeDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD9322D3D6B5EF779B92FCC /* Pods_bridgeDemoUITests.framework */; };
@@ -48,6 +51,8 @@
 		1B5B4D425295524194C86DBB /* Pods_bridgeDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bridgeDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DD9322D3D6B5EF779B92FCC /* Pods_bridgeDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bridgeDemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5363B6E7180BF90DF41772A4 /* Pods-bridgeDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bridgeDemoTests.debug.xcconfig"; path = "Target Support Files/Pods-bridgeDemoTests/Pods-bridgeDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		571AB01F22F3E0B400F986CA /* QRCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QRCodeViewController.h; sourceTree = "<group>"; };
+		571AB02022F3E0B400F986CA /* QRCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QRCodeViewController.m; sourceTree = "<group>"; };
 		572DFCA022EAA42D00D4B030 /* bridgeDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bridgeDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		572DFCA322EAA42D00D4B030 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		572DFCA422EAA42D00D4B030 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -75,6 +80,10 @@
 		572DFCE422EAE92800D4B030 /* ViewController+Photo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ViewController+Photo.m"; sourceTree = "<group>"; };
 		572DFCE722EAFCBA00D4B030 /* DataBaseTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataBaseTableViewController.h; sourceTree = "<group>"; };
 		572DFCE822EAFCBA00D4B030 /* DataBaseTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataBaseTableViewController.m; sourceTree = "<group>"; };
+		572DFD6B22F3DA2400D4B030 /* MyQRCodeTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyQRCodeTools.h; sourceTree = "<group>"; };
+		572DFD6C22F3DA2400D4B030 /* MyQRCodeTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyQRCodeTools.m; sourceTree = "<group>"; };
+		572DFD6E22F3DB6A00D4B030 /* ImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
+		572DFD6F22F3DB6A00D4B030 /* ImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
 		A73F29DDD6E6D401DD721AEA /* Pods-bridgeDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bridgeDemoUITests.debug.xcconfig"; path = "Target Support Files/Pods-bridgeDemoUITests/Pods-bridgeDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C0B67F3DAEC870CDD0623837 /* Pods-bridgeDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bridgeDemoUITests.release.xcconfig"; path = "Target Support Files/Pods-bridgeDemoUITests/Pods-bridgeDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DCFF665FF3D5FC29EF780C89 /* Pods-bridgeDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bridgeDemo.debug.xcconfig"; path = "Target Support Files/Pods-bridgeDemo/Pods-bridgeDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -145,10 +154,16 @@
 				572DFCD622EAA53D00D4B030 /* Person.m */,
 				572DFCDA22EACF7400D4B030 /* MyDataBaseTest.h */,
 				572DFCDB22EACF7400D4B030 /* MyDataBaseTest.m */,
+				572DFD6B22F3DA2400D4B030 /* MyQRCodeTools.h */,
+				572DFD6C22F3DA2400D4B030 /* MyQRCodeTools.m */,
 				572DFCDD22EADB2700D4B030 /* MyLocationTest.h */,
 				572DFCDE22EADB2700D4B030 /* MyLocationTest.m */,
 				572DFCE722EAFCBA00D4B030 /* DataBaseTableViewController.h */,
 				572DFCE822EAFCBA00D4B030 /* DataBaseTableViewController.m */,
+				572DFD6E22F3DB6A00D4B030 /* ImageViewController.h */,
+				572DFD6F22F3DB6A00D4B030 /* ImageViewController.m */,
+				571AB01F22F3E0B400F986CA /* QRCodeViewController.h */,
+				571AB02022F3E0B400F986CA /* QRCodeViewController.m */,
 				572DFCD822EACCB700D4B030 /* test.html */,
 				572DFCA922EAA42D00D4B030 /* Main.storyboard */,
 				572DFCAC22EAA42D00D4B030 /* Assets.xcassets */,
@@ -421,14 +436,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				572DFD7022F3DB6A00D4B030 /* ImageViewController.m in Sources */,
 				572DFCDC22EACF7400D4B030 /* MyDataBaseTest.m in Sources */,
 				572DFCA822EAA42D00D4B030 /* ViewController.m in Sources */,
 				572DFCB322EAA42D00D4B030 /* main.m in Sources */,
 				572DFCD722EAA53D00D4B030 /* Person.m in Sources */,
 				572DFCE922EAFCBA00D4B030 /* DataBaseTableViewController.m in Sources */,
 				572DFCE522EAE92800D4B030 /* ViewController+Photo.m in Sources */,
+				571AB02122F3E0B400F986CA /* QRCodeViewController.m in Sources */,
 				572DFCDF22EADB2700D4B030 /* MyLocationTest.m in Sources */,
 				572DFCA522EAA42D00D4B030 /* AppDelegate.m in Sources */,
+				572DFD6D22F3DA2400D4B030 /* MyQRCodeTools.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
