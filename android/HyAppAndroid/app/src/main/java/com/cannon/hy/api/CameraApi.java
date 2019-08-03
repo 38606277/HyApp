@@ -20,6 +20,9 @@ import com.google.zxing.integration.android.IntentResult;
 
 import wendu.dsbridge.CompletionHandler;
 
+/**
+ * 相机Api
+ */
 public class CameraApi {
     
     private Context mContext;

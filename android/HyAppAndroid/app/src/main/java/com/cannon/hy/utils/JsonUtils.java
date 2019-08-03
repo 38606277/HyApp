@@ -11,6 +11,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.Reader;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -51,6 +52,7 @@ public class JsonUtils {
         return gson.toJson(src);
     }
 
+
     public static <T>  T toModel(Reader reader , Class<T> model){
         return gson.fromJson(reader,model);
     }
@@ -58,13 +60,18 @@ public class JsonUtils {
         return gson.fromJson(json,model);
     }
 
-    public static Map<String,Object> toMapSO(String result){
-        return gson.fromJson(result,new TypeToken<Map<String,Object>>(){}.getType());
+    public static Map<String,Object> toMapSO(String json){
+        return gson.fromJson(json,new TypeToken<Map<String,Object>>(){}.getType());
     }
 
-    public static Map<String,String> toMapSS(String result){
-        return gson.fromJson(result,new TypeToken<Map<String,Object>>(){}.getType());
+    public static Map<String,String> toMapSS(String json){
+        return gson.fromJson(json,new TypeToken<Map<String,Object>>(){}.getType());
     }
+
+    public static String[] toStringArray(String json){
+         return gson.fromJson(json,String[].class);
+    }
+
 
 
 }

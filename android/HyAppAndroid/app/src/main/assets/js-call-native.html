@@ -45,24 +45,64 @@
 <body>
 
 <div id="app">
-    <div  class="btn" onclick="takePhoto()">拍照</div>
+    <div class="btn" onclick="takePhoto()">拍照</div>
     <div id="qrCodeBtn" class="btn" onclick="scanQrCode()">扫描二维码</div>
+    <div id="locationBtn" class="btn" onclick="getLocationInfo()">获取定位信息</div>
+    <div class="btn" onclick="createTable()">创建表</div>
+    <div class="btn" onclick="addUser()">添加用户信息</div>
+    <div id="queryUserListBtn" class="btn" onclick="queryUserList()">查询所有用户</div>
 
     <input id="qrCodeET" class="editText" v-model="message" placeholder="edit me">
     <p>扫描结果 : {{ message }}</p>
+
 </div>
 
 <script>
- function takePhoto(){
-          dsBridge.call("takePhoto","二维码扫描")
-   }
 
-   function scanQrCode(){
-          dsBridge.call("scanQrCode","二维码扫描",function (value) {
-            //alert(value)
+    function takePhoto(){
+          dsBridge.call("cameraApi.takePhoto","拍照");
+    }
+
+
+    function scanQrCode(){
+          dsBridge.call("cameraApi.scanQrCode","二维码扫描",function (value) {
             document.getElementById("qrCodeET").value = (value);
         })
-   }
+    }
+
+
+    function getLocationInfo(){
+          dsBridge.call("locationApi.getLocationInfo","获取定位信息",function (value) {
+            document.getElementById("locationBtn").innerHTML = (value);
+        })
+    }
+
+    function createTable(){
+          dsBridge.call("dbApi.execSQL","create table if not exists USER (ID integer primary key autoincrement,ACCOUNT varchar,PASSWORD varchar,NAME varchar)",function (value) {
+            alert("创建成功");
+        })
+    }
+
+
+    function addUser(){
+          dsBridge.call("dbApi.execSQL","INSERT INTO USER(ACCOUNT,PASSWORD,NAME) VALUES ('123456','abcdef','张三')",function (value) {
+            alert("添加成功");
+        })
+    }
+
+    function queryUserList(){
+           var sql = {sql:"select * from USER", selectionArgs:"[]"};
+           var json = JSON.stringify(sql);
+           dsBridge.call("dbApi.querySQL",json,function (value) {
+           document.getElementById("queryUserListBtn").innerHTML = (value);
+        })
+
+    }
+
+
+
+
+
 </script>
 
 <script src="./index.js"/>
