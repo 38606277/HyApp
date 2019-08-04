@@ -18,17 +18,33 @@
           <img src="@/images/swipe/swipe-4.jpg" />
         </van-swipe-item>
       </van-swipe>
-      <div class="recommend-title">功能</div>
+      <!-- <div class="recommend-title">功能</div> -->
       <van-grid :column-num="3">
-        <van-grid-item key="1" icon="photo-o" to="/AssetEdit" text="个人资产展示" />
-        <van-grid-item key="2" icon="cart-o" to="AssetView" text="资产信息修改" />
-        <van-grid-item key="3" icon="like-o" text="部门内资产责任人变更" />
-        <van-grid-item key="4" icon="home-o" text="名下资产" />
-        <van-grid-item key="5" icon="star-o" text="部门内资产地点调拨" />
-        <van-grid-item key="6" icon="chat-o" text="部门间资产调拨" />
-        <van-grid-item key="7" icon="photo-o" text="个人资产展示" />
-        <van-grid-item key="8" icon="aim" text="资产信息修改" />
-        <van-grid-item key="9" icon="more-o" text="部门内资产责任人变更" />
+        <van-grid-item key="1" to="/AssetEdit">
+          <img class="function-item" src="@/images/icon/f3dd6c383aeb3b02.png" />
+          <div class="van-grid-item__text">个人资产展示</div>
+        </van-grid-item>
+        <van-grid-item key="2" to="/AssetView">
+          <img class="function-item" src="@/images/icon/13ceb38dcf262f02.png" />
+          <div class="van-grid-item__text">资产卡片</div>
+        </van-grid-item>
+        <van-grid-item key="3" to="/AssetMap">
+          <img class="function-item" src="@/images/icon/c70f1e85ae4a4f02.png" />
+          <div class="van-grid-item__text">资产地图</div>
+        </van-grid-item>
+        <van-grid-item key="4" to="/AssetEdit">
+          <img class="function-item" src="@/images/icon/6f7d6e44963c9302.png" />
+          <div class="van-grid-item__text">盘点</div>
+        </van-grid-item>
+        <van-grid-item key="5" to="/AssetView">
+          <img class="function-item" src="@/images/icon/fdf170ee89594b02.png" />
+          <div class="van-grid-item__text">资产调拨</div>
+        </van-grid-item>
+        <van-grid-item key="6" to="/AssetMap">
+          <img class="function-item" src="@/images/icon/26ffa31b56646402.png" />
+          <div class="van-grid-item__text">资产分析</div>
+        </van-grid-item>
+
       </van-grid>
     </div>
   </div>
@@ -209,11 +225,20 @@ export default {
   }
 }
 
+.function-item {
+  height: 48px;
+  width: 48px;
+}
+
+.function-name {
+  font-size: 12px;
+}
+
 .recommend-title {
   display: flex;
-  justify-content: left ;
-  align-items: center ;
-  text-align: center ;
+  justify-content: left;
+  align-items: center;
+  text-align: center;
   font-size: 14px;
   height: 30px;
 

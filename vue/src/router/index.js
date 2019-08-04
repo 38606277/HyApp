@@ -12,6 +12,7 @@ const AddressList = () => import(/* webpackChunkName: "AddressList" */ '@/views/
 const EditAddress = () => import(/* webpackChunkName: "EditAddress" */ '@/views/EditAddress/EditAddress');
 const AssetEdit = () => import(/* webpackChunkName: "AssetEdit" */ '@/views/AssetEdit/AssetEdit');
 const AssetView = () => import(/* webpackChunkName: "AssetView" */ '@/views/AssetEdit/AssetView');
+const AssetMap = () => import(/* webpackChunkName: "AssetEdit" */ '@/views/AssetEdit/AssetMap');
 const OrderList = () => import(/* webpackChunkName: "OrderList" */ '@/views/OrderList/OrderList');
 
 Vue.use(Router);
@@ -85,6 +86,14 @@ export default new Router({
       path: '/AssetView',
       name: 'AssetView',
       component: AssetView,
+      meta: {
+        fullScreen: true
+      }
+    },
+    {
+      path: '/AssetMap',
+      name: 'AssetMap',
+      component: AssetMap,
       meta: {
         fullScreen: true
       }

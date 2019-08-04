@@ -36,18 +36,8 @@
       <van-cell title="所属部门" is-link />
 
       <van-uploader v-model="fileList" multiple />
-      <van-field
-        v-model="username"
-        clearable
-        label="资产原值"
-        @click-right-icon="$toast('question')"
-      />
-      <van-field
-        v-model="username"
-        clearable
-        label="累计折旧"
-        @click-right-icon="$toast('question')"
-      />
+      <van-field v-model="username" clearable label="资产原值" @click-right-icon="$toast('question')" />
+      <van-field v-model="username" clearable label="累计折旧" @click-right-icon="$toast('question')" />
       <van-button type="primary" size="large" @click="saveClick()">保存</van-button>
     </van-cell-group>
   </div>
@@ -55,7 +45,7 @@
 
 <script>
 import { Toast } from 'vant';
-import { DropdownMenu, DropdownItem, Card, Field, Uploader,Button } from 'vant';
+import { DropdownMenu, DropdownItem, Card, Field, Uploader, Button } from 'vant';
 // Vue.use(DropdownMenu).use(DropdownItem);
 
 export default {
@@ -63,7 +53,7 @@ export default {
   data() {
     return {
       fileList: [{ url: 'https://img.yzcdn.cn/vant/cat.jpeg' }],
-      tagCode:'aaa',
+      tagCode: 'aaa',
       imageURL: '../../images/good/pic-7.jpg',
       value1: 0,
       value2: 0,
@@ -83,17 +73,15 @@ export default {
       Toast('按钮');
     },
 
-    scanQrCode(){
-      Toast('二维码');
-          dsBridge.call("scanQrCode","二维码扫描",
-          function (value) {
-            //alert(value)
-            this.tagCode = value;
-        })
-   },
-    saveClick() {
-     this.tagCode='bbb'; 
+    scanQrCode() {
+      var self = this;
+      dsBridge.call('cameraApi.scanQrCode', '二维码扫描', function(value) {
+        self.tagCode = value;
+      });
     },
+    saveClick() {
+      this.tagCode = 'bbb';
+    }
   }
 };
 </script>
