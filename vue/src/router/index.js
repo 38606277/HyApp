@@ -10,7 +10,7 @@ const NotFound = () => import(/* webpackChunkName: "NotFound" */ '@/views/NotFou
 const Order = () => import(/* webpackChunkName: "Order" */ '@/views/Order/Order');
 const AddressList = () => import(/* webpackChunkName: "AddressList" */ '@/views/AddressList/AddressList');
 const EditAddress = () => import(/* webpackChunkName: "EditAddress" */ '@/views/EditAddress/EditAddress');
-const AssetEdit = () => import(/* webpackChunkName: "AssetEdit" */ '@/views/AssetEdit/AssetEdit');
+const AssetList = () => import(/* webpackChunkName: "AssetEdit" */ '@/views/AssetEdit/AssetList');
 const AssetView = () => import(/* webpackChunkName: "AssetView" */ '@/views/AssetEdit/AssetView');
 const AssetMap = () => import(/* webpackChunkName: "AssetEdit" */ '@/views/AssetEdit/AssetMap');
 const OrderList = () => import(/* webpackChunkName: "OrderList" */ '@/views/OrderList/OrderList');
@@ -107,9 +107,9 @@ export default new Router({
       }
     },
     {
-      path: '/AssetEdit',
-      name: 'AssetEdit',
-      component: AssetEdit,
+      path: '/AssetList',
+      name: 'AssetList',
+      component: AssetList,
       meta: {
         fullScreen: true
       }

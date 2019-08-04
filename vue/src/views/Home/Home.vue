@@ -20,7 +20,7 @@
       </van-swipe>
       <!-- <div class="recommend-title">功能</div> -->
       <van-grid :column-num="3">
-        <van-grid-item key="1" to="/AssetEdit">
+        <van-grid-item key="1" to="/AssetList">
           <img class="function-item" src="@/images/icon/f3dd6c383aeb3b02.png" />
           <div class="van-grid-item__text">个人资产展示</div>
         </van-grid-item>
