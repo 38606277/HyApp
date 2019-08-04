@@ -9,11 +9,9 @@
 
 <script>
 import Tab from '@/views/Tab/Tab';
-import Github from '@/components/github/github';
 export default {
   components: {
-    Tab,
-    Github
+    Tab
   }
 };
 </script>

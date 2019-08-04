@@ -1,5 +1,6 @@
 module.exports = {
-  baseUrl: './',
+  publicPath: './',
+   outputDir: '../android/HyAppAndroid/app/src/main/assets/dist',
   devServer: {
     proxy: {
       '/api': {
@@ -11,5 +12,6 @@ module.exports = {
         }
       }
     }
-  }
+  },
+  
 };

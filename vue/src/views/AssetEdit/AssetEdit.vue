@@ -3,7 +3,6 @@
     <van-nav-bar
       title="资产管理"
       left-text="返回"
-      right-text="按钮"
       left-arrow
       @click-left="goHome"
       @click-right="onClickRight"
@@ -72,7 +71,7 @@ import Vue from 'vue';
 
 import { Toast } from 'vant';
 import { DropdownMenu, DropdownItem, Card } from 'vant';
-Vue.use(DropdownMenu).use(DropdownItem);
+// Vue.use(DropdownMenu).use(DropdownItem);
 
 export default {
   name: 'User',
