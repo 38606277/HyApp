@@ -10,6 +10,7 @@
     <!--<script src="https://cdn.jsdelivr.net/npm/dsbridge/dist/dsbridge.js"> </script>-->
     <script src="./dsbridge.js"> </script>
     <script src="./vue.js"></script>
+
 </head>
 <style>
     .btn {
@@ -44,23 +45,90 @@
 <body>
 
 <div id="app">
-
+    <div id="takePhotoBtn" class="btn" onclick="takePhoto()">拍照</div>
+    <div id="selectPhotoBtn" class="btn" onclick="selectPhoto()">选择图片</div>
+    <div id="selectMultiplePhotoBtn" class="btn" onclick="selectMultiplePhoto()">选择多张图片</div>
     <div id="qrCodeBtn" class="btn" onclick="scanQrCode()">扫描二维码</div>
+    <div id="locationBtn" class="btn" onclick="getLocationInfo()">获取定位信息</div>
+    <div class="btn" onclick="createTable()">创建表</div>
+    <div class="btn" onclick="addUser()">添加用户信息</div>
+    <div id="queryUserListBtn" class="btn" onclick="queryUserList()">查询所有用户</div>
 
     <input id="qrCodeET" class="editText" v-model="message" placeholder="edit me">
     <p>扫描结果 : {{ message }}</p>
+    <img id="imageView" width="107" height="98"/>
+
 </div>
 
 <script>
-   function scanQrCode(){
-          dsBridge.call("scanQrCode","二维码扫描",function (value) {
-            //alert(value)
+
+    function takePhoto(){
+          dsBridge.call("cameraApi.takePhoto","拍照",function (value) {
+
+             document.getElementById("takePhotoBtn").innerHTML = (value);
+             document.getElementById("imageView").src = "file://" +  JSON.parse(value)[0];
+
+        })
+    }
+
+    function selectPhoto(){
+          dsBridge.call("cameraApi.selectPhoto","选择图片",function (value) {
+
+             document.getElementById("selectPhotoBtn").innerHTML = (value);
+
+        })
+    }
+
+    function selectMultiplePhoto(){
+         //参数 5 为图片张数
+         dsBridge.call("cameraApi.selectMultiplePhoto","5",function (value) {
+             document.getElementById("selectMultiplePhotoBtn").innerHTML = (value);
+
+        })
+    }
+
+    function scanQrCode(){
+          dsBridge.call("cameraApi.scanQrCode","二维码扫描",function (value) {
             document.getElementById("qrCodeET").value = (value);
         })
-   }
+    }
+
+
+    function getLocationInfo(){
+          dsBridge.call("locationApi.getLocationInfo","获取定位信息",function (value) {
+            document.getElementById("locationBtn").innerHTML = (value);
+        })
+    }
+
+    function createTable(){
+          dsBridge.call("dbApi.execSQL","create table if not exists USER (ID integer primary key autoincrement,ACCOUNT varchar,PASSWORD varchar,NAME varchar)",function (value) {
+            alert("创建成功");
+        })
+    }
+
+
+    function addUser(){
+          dsBridge.call("dbApi.execSQL","INSERT INTO USER(ACCOUNT,PASSWORD,NAME) VALUES ('123456','abcdef','张三')",function (value) {
+            alert("添加成功");
+        })
+    }
+
+    function queryUserList(){
+           var sql = {sql:"select * from USER", selectionArgs:"[]"};
+           var json = JSON.stringify(sql);
+           dsBridge.call("dbApi.querySQL",json,function (value) {
+           document.getElementById("queryUserListBtn").innerHTML = (value);
+        })
+
+    }
+
+
+
+
+
 </script>
 
+<script src="./index.js"/>
 
-<script src="index.js"></script>
 </body>
 </html>

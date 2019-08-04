@@ -1,25 +1,33 @@
 package com.cannon.hy.activity;
 
-import android.Manifest;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
-import android.widget.Toast;
+import android.os.Environment;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import com.cannon.hy.R;
 import com.cannon.hy.api.CameraApi;
-import com.cannon.hy.api.UserApi;
+import com.cannon.hy.api.DBApi;
+import com.cannon.hy.api.LocationApi;
+import com.cannon.hy.helper.DBHelper;
 
+
+import org.devio.takephoto.app.TakePhoto;
+import org.devio.takephoto.app.TakePhotoActivity;
+import org.devio.takephoto.model.TImage;
+import org.devio.takephoto.model.TResult;
+import org.devio.takephoto.model.TakePhotoOptions;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import wendu.dsbridge.DWebView;
 
-public class JsCallNativeActivity extends AppCompatActivity {
+public class JsCallNativeActivity extends TakePhotoActivity implements CameraApi.CameraActionListener {
     private DWebView mDWebView;
     private CameraApi cameraApi;
 
@@ -30,9 +38,16 @@ public class JsCallNativeActivity extends AppCompatActivity {
         mDWebView = (DWebView) findViewById(R.id.webview);
         // set debug mode
         DWebView.setWebContentsDebuggingEnabled(true);
-        //mDWebView.addJavascriptObject(new UserApi(this), "user");
-        mDWebView.addJavascriptObject(cameraApi = new CameraApi(this), "");
-        mDWebView.loadUrl("file:///android_asset/js-call-native.html");
+
+        mDWebView.addJavascriptObject(new DBApi(this), "dbApi");
+        mDWebView.addJavascriptObject(cameraApi = new CameraApi(this,this), "cameraApi");
+        mDWebView.addJavascriptObject(new LocationApi(this), "locationApi");
+
+        mDWebView.loadUrl("file:///android_asset/dist/index.html");//js-call-native.html");
+       // mDWebView.loadUrl("file:///android_asset/js-call-native.html");
+
+        getSupportActionBar().hide();
+
     }
 
 
@@ -43,4 +58,68 @@ public class JsCallNativeActivity extends AppCompatActivity {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
+
+
+    /**
+     * 拍照
+     */
+    public void takePhoto(){
+        File file = new File(Environment.getExternalStorageDirectory(), "/temp/" + System.currentTimeMillis() + ".jpg");
+        if (!file.getParentFile().exists()) {
+            file.getParentFile().mkdirs();
+        }
+
+        Uri imageUri = Uri.fromFile(file);
+        getTakePhoto().onPickFromCapture(imageUri);
+    }
+
+    /**
+     * 选择图片
+     */
+    public void selectPhoto(){
+        getTakePhoto().onPickFromGallery();
+    }
+
+    /**
+     * 选择多张
+     * @param limit
+     */
+    public void selectMultiplePhoto(int limit){
+        TakePhoto takePhoto  = getTakePhoto();
+        TakePhotoOptions.Builder builder = new TakePhotoOptions.Builder();
+        builder.setWithOwnGallery(true);
+        takePhoto.setTakePhotoOptions(builder.create());
+        takePhoto.onPickMultiple(limit);
+    }
+
+    @Override
+    public void takeCancel() {
+        super.takeCancel();
+    }
+
+    @Override
+    public void takeFail(TResult result, String msg) {
+        super.takeFail(result, msg);
+    }
+
+    @Override
+    public void takeSuccess(TResult result) {
+        super.takeSuccess(result);
+        List<String> pathList = new ArrayList<>();
+        for(TImage image: result.getImages()){
+            pathList.add(image.getOriginalPath());
+        }
+        cameraApi.callBackPath(pathList);
+    }
+
+//    private void showImg(ArrayList<TImage> images) {
+//        Intent intent = new Intent(this, ResultActivity.class);
+//        intent.putExtra("images", images);
+//        startActivity(intent);
+//        finish();
+//    }
+
+
+
+
 }

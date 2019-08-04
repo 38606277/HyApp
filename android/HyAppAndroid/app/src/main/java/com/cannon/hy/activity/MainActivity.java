@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.cannon.hy.R;
-import com.google.zxing.integration.android.IntentIntegrator;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -26,6 +26,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
     implementation project(path: ':dsbridge')
 
     /* Gson框架 解析Json格式字符串 */
@@ -34,5 +35,11 @@ dependencies {
     /*添加依赖 二维码扫描库 https://github.com/journeyapps/zxing-android-embedded */
     implementation 'com.journeyapps:zxing-android-embedded:3.5.0'
     implementation 'com.google.zxing:core:3.3.0'
+
+    implementation project(path: ':takephoto_library')
+
+
+    implementation 'com.github.bumptech.glide:glide:3.6.0'
+    //annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 
 }
