@@ -21,6 +21,7 @@ import com.cannon.hy.model.ResultModel;
 import com.cannon.hy.utils.JsonUtils;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -98,7 +99,7 @@ public class LocationApi {
             resultModel.setCode(-1);
             resultModel.setMsg("获取定位失败!");
             Log.i(TAG, "获取定位失败!");
-            completionHandler.complete(JsonUtils.toJson(resultModel));
+            completionHandler.complete(getResult(resultModel));
             return;
         }
 
@@ -121,8 +122,26 @@ public class LocationApi {
             resultModel.setCode(-1);
             resultModel.setMsg("获取定位失败!");
         }finally {
-            completionHandler.complete(JsonUtils.toJson(resultModel));
+            completionHandler.complete(getResult(resultModel));
         }
     }
+
+    private String getResult(ResultModel<List<Address>> resultModel){
+        List<Double> locationArray = new ArrayList<>();
+
+        if(resultModel.getCode() == 200){
+            Address address = resultModel.getData().get(0);
+            locationArray.add(address.getLongitude());
+            locationArray.add(address.getLatitude());
+        }else{
+            locationArray.add(-1d);
+            locationArray.add(-1d);
+
+        }
+        return JsonUtils.toJson(locationArray);
+
+
+    }
+
 
 }
