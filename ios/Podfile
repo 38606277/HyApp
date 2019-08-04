@@ -3,6 +3,7 @@ platform :ios, '9.0'
 
 pod "dsBridge"
 pod "FMDB"
+pod "Reachability"
 
 target 'bridgeDemo' do
   # Comment the next line if you don't want to use dynamic frameworks

@@ -14,12 +14,17 @@
 #import <CoreLocation/CoreLocation.h>
 #import "ViewController+Photo.h"
 #import "MyQRCodeTools.h"
+#import "NetworkTools.h"
+#import <Reachability.h>
+#import <ContactsUI/ContactsUI.h>
+#import "MyRecordTools.h"
 
-@interface ViewController ()<WKUIDelegate,CLLocationManagerDelegate>
+@interface ViewController ()<WKUIDelegate,CLLocationManagerDelegate,CNContactPickerDelegate,CNContactViewControllerDelegate>
     
 @property (nonatomic, strong) CLLocationManager *locationManager;//设置manager
 @property (nonatomic, strong) NSString *currentCity;
 @property (nonatomic,strong) UIImageView *im;
+@property (nonatomic,strong) UILabel *l;
 @end
 
 @implementation ViewController{
@@ -30,19 +35,84 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initBridge];
-//    [self wirteDB];
-////    [self DBaddData];
-//    [self readDB];
     UIImageView *im = [[UIImageView alloc]initWithFrame:CGRectMake(0, 400, 100, 100)];
     im.contentMode = UIViewContentModeScaleAspectFill;
     [self.view addSubview:im];
     self.im = im;
+    UILabel *l = [[UILabel alloc]initWithFrame:CGRectMake(0, 500, 375, 100)];
+    self.l = l;
+    l.numberOfLines = 0;
+    l.textColor = [UIColor blackColor];
+    [self.view addSubview:l];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showImage:) name:@"photo" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showQRCode:) name:@"QRCode" object:nil];
+}
+
+- (void)showQRCode:(NSNotification *)noti{
+    self.l.text = (NSString *)noti.object;
 }
 
 - (void)showImage:(NSNotification *)noti{
     UIImage *image = noti.object;
     self.im.image = image;
+}
+
+- (void)checkNet:(NSString *)msg :(JSCallback)completion{
+    NetworkStatus status = [NetworkTools isConnectionAvailable];
+    NSString *str;
+    switch (status) {
+        case NotReachable:
+            str = @"没网";
+            break;
+        case ReachableViaWiFi:
+            str = @"wifi";
+            break;
+        case ReachableViaWWAN:
+            str = @"WWAN";
+            break;
+    }
+    UIAlertView *v = [[UIAlertView alloc]initWithTitle:@"回调结果" message:str delegate:self cancelButtonTitle:@"cancle" otherButtonTitles:nil, nil];
+    [v show];
+}
+
+- (void)callContact:(NSString *)msg :(JSCallback)completion{
+    [self checkContact];
+}
+
+- (void)checkContact{
+    CNContactPickerViewController *nav = [[CNContactPickerViewController alloc] init];
+    nav.delegate = self;
+    [[self topViewController] presentViewController:nav animated:YES completion:nil];
+    
+    CNAuthorizationStatus status = [CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts];
+    if (status == CNAuthorizationStatusAuthorized) {
+        
+    }else{
+        return;
+    }
+}
+
+- (UIViewController *)topViewController {
+    UIViewController *topVC;
+    topVC = [self getTopViewController:[[UIApplication sharedApplication].keyWindow rootViewController]];
+    while (topVC.presentedViewController) {
+        topVC = [self getTopViewController:topVC.presentedViewController];
+    }
+    return topVC;
+}
+
+- (UIViewController *)getTopViewController:(UIViewController *)vc {
+    if (![vc isKindOfClass:[UIViewController class]]) {
+        return nil;
+    }
+    if ([vc isKindOfClass:[UINavigationController class]]) {
+        return [self getTopViewController:[(UINavigationController *)vc topViewController]];
+    } else if ([vc isKindOfClass:[UITabBarController class]]) {
+        return [self getTopViewController:[(UITabBarController *)vc selectedViewController]];
+        
+    } else {
+        return vc;
+    }
 }
     
 - (void)requestLocation:(NSString *)msg :(JSCallback)completion{
@@ -57,6 +127,8 @@
     }
         completion(@"111",YES);
 }
+
+
     
 - (void)initBridge{
     CGRect bounds=self.view.bounds;
@@ -86,13 +158,12 @@
     
     
     UIButton *b = [UIButton buttonWithType:UIButtonTypeCustom];
-    [b setTitle:@"调用h5" forState:UIControlStateNormal];
+    [b setTitle:@"调h5" forState:UIControlStateNormal];
     b.backgroundColor = [UIColor blackColor];
     [b setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [b addTarget:self action:@selector(hehehe:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:b];
-    b.frame = CGRectMake(100, 500, 100, 100);
-    NSLog(@"加载完成");
+    b.frame = CGRectMake(100, 500, 40, 40);
 }
     
 - (void)hehehe:(UIButton *)sender{
@@ -100,6 +171,22 @@
         UIAlertView *v = [[UIAlertView alloc]initWithTitle:@"回调结果" message:value.stringValue delegate:self cancelButtonTitle:@"cancle" otherButtonTitles:nil, nil];
         [v show];
     }];
+}
+
+- (void)callPhone:(NSString *)msg :(JSCallback)comp{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"telprompt://10010"]];
+}
+
+- (void)startRecord:(NSString *)msg :(JSCallback)comp{
+    [[MyRecordTools shareTools] recordingAction];
+}
+
+- (void)endRecord:(NSString *)msg :(JSCallback)comp{
+    [[MyRecordTools shareTools] stopAction];
+}
+
+- (void)playRecord:(NSString *)msg :(JSCallback)comp{
+    [[MyRecordTools shareTools] playAction];
 }
     
 #pragma mark location代理
@@ -136,7 +223,7 @@
                 self.currentCity = placeMark.locality ;//获取当前城市
                 static dispatch_once_t onceToken;
                 dispatch_once(&onceToken, ^{
-                    UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"native" message:self.currentCity delegate:self cancelButtonTitle:@"cancle" otherButtonTitles:nil, nil];
+                    UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"native" message:[NSString stringWithFormat:@"当前地点%@",placeMark.locality] delegate:self cancelButtonTitle:@"cancle" otherButtonTitles:nil, nil];
                     [av show];
                 });
             }
@@ -159,8 +246,6 @@
     [dwebview evaluateJavaScript:@"addValue(3,4)" completionHandler:^(id _Nullable result, NSError * _Nullable error) {
         NSLog(@"result:%@,error:%@",result,error);
     }];
-    NSLog(@"%@",[NSThread currentThread]);
-    NSLog(@"321321312");
     
 }
 

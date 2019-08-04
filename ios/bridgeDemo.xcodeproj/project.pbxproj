@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		571AB02122F3E0B400F986CA /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 571AB02022F3E0B400F986CA /* QRCodeViewController.m */; };
+		571AB02422F40C8F00F986CA /* NetworkTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 571AB02322F40C8F00F986CA /* NetworkTools.m */; };
+		571AB02A22F4241900F986CA /* MyRecordTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 571AB02922F4241900F986CA /* MyRecordTools.m */; };
 		572DFCA522EAA42D00D4B030 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFCA422EAA42D00D4B030 /* AppDelegate.m */; };
 		572DFCA822EAA42D00D4B030 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFCA722EAA42D00D4B030 /* ViewController.m */; };
 		572DFCAB22EAA42D00D4B030 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 572DFCA922EAA42D00D4B030 /* Main.storyboard */; };
@@ -53,6 +55,10 @@
 		5363B6E7180BF90DF41772A4 /* Pods-bridgeDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bridgeDemoTests.debug.xcconfig"; path = "Target Support Files/Pods-bridgeDemoTests/Pods-bridgeDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		571AB01F22F3E0B400F986CA /* QRCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QRCodeViewController.h; sourceTree = "<group>"; };
 		571AB02022F3E0B400F986CA /* QRCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QRCodeViewController.m; sourceTree = "<group>"; };
+		571AB02222F40C8F00F986CA /* NetworkTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkTools.h; sourceTree = "<group>"; };
+		571AB02322F40C8F00F986CA /* NetworkTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkTools.m; sourceTree = "<group>"; };
+		571AB02822F4241900F986CA /* MyRecordTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyRecordTools.h; sourceTree = "<group>"; };
+		571AB02922F4241900F986CA /* MyRecordTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyRecordTools.m; sourceTree = "<group>"; };
 		572DFCA022EAA42D00D4B030 /* bridgeDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bridgeDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		572DFCA322EAA42D00D4B030 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		572DFCA422EAA42D00D4B030 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -164,6 +170,10 @@
 				572DFD6F22F3DB6A00D4B030 /* ImageViewController.m */,
 				571AB01F22F3E0B400F986CA /* QRCodeViewController.h */,
 				571AB02022F3E0B400F986CA /* QRCodeViewController.m */,
+				571AB02222F40C8F00F986CA /* NetworkTools.h */,
+				571AB02322F40C8F00F986CA /* NetworkTools.m */,
+				571AB02822F4241900F986CA /* MyRecordTools.h */,
+				571AB02922F4241900F986CA /* MyRecordTools.m */,
 				572DFCD822EACCB700D4B030 /* test.html */,
 				572DFCA922EAA42D00D4B030 /* Main.storyboard */,
 				572DFCAC22EAA42D00D4B030 /* Assets.xcassets */,
@@ -436,6 +446,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				571AB02422F40C8F00F986CA /* NetworkTools.m in Sources */,
+				571AB02A22F4241900F986CA /* MyRecordTools.m in Sources */,
 				572DFD7022F3DB6A00D4B030 /* ImageViewController.m in Sources */,
 				572DFCDC22EACF7400D4B030 /* MyDataBaseTest.m in Sources */,
 				572DFCA822EAA42D00D4B030 /* ViewController.m in Sources */,

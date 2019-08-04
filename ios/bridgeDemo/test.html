@@ -36,7 +36,13 @@
 <div class="btn" onclick="insertDB()">insertDB</div>
 <div class="btn" onclick="callSynSwift()">requestLocation</div>
 <div class="btn" onclick="photo()">photo</div>
-<!--<div class="btn" onclick="QRCode()">QRCode</div>-->
+<div class="btn" onclick="QRCode()">QRCode</div>
+<div class="btn" onclick="callPhone()">callPhone</div>
+<div class="btn" onclick="checkNet()">checkNet</div>
+<div class="btn" onclick="checkContact()">checkContact</div>
+<div class="btn" onclick="startRecord()">startRecord</div>
+<div class="btn" onclick="endRecord()">endRecord</div>
+<div class="btn" onclick="playRecord()">playRecord</div>
 <!--<div class="btn" onclick="callAsynSwift()">Async call(swift)</div>-->
 <!--<div class="btn" onclick="callNoArgSyn()">Sync call without argument</div>-->
 <!--<div class="btn" onclick="callNoArgAsyn()">Async call without argument</div>-->
@@ -91,9 +97,33 @@ function callSynSwift() {
         })
     }
 
-function callAsynSwift() {
-    dsBridge.call("swift.testAsyn","hello", function (v) {
-                  alert(v)
+function callPhone() {
+    dsBridge.call("my.callPhone","hello", function (v) {
+                  })
+}
+
+function checkNet() {
+    dsBridge.call("my.checkNet","hello", function (v) {
+                  })
+}
+
+function checkContact() {
+    dsBridge.call("my.callContact","hello", function (v) {
+                  })
+}
+
+function startRecord() {
+    dsBridge.call("my.startRecord","hello", function (v) {
+                  })
+}
+
+function endRecord() {
+    dsBridge.call("my.endRecord","hello", function (v) {
+                  })
+}
+
+function playRecord() {
+    dsBridge.call("my.playRecord","hello", function (v) {
                   })
 }
 
