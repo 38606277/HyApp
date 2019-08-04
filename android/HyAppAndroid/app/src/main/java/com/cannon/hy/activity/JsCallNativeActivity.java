@@ -1,20 +1,16 @@
 package com.cannon.hy.activity;
 
-import android.Manifest;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import com.cannon.hy.R;
 import com.cannon.hy.api.CameraApi;
-import com.cannon.hy.api.UserApi;
+import com.cannon.hy.api.DBApi;
+import com.cannon.hy.api.LocationApi;
+import com.cannon.hy.helper.DBHelper;
 
 
 import wendu.dsbridge.DWebView;
@@ -30,9 +26,13 @@ public class JsCallNativeActivity extends AppCompatActivity {
         mDWebView = (DWebView) findViewById(R.id.webview);
         // set debug mode
         DWebView.setWebContentsDebuggingEnabled(true);
-        //mDWebView.addJavascriptObject(new UserApi(this), "user");
-        mDWebView.addJavascriptObject(cameraApi = new CameraApi(this), "");
+
+        mDWebView.addJavascriptObject(new DBApi(this), "dbApi");
+        mDWebView.addJavascriptObject(cameraApi = new CameraApi(this), "cameraApi");
+        mDWebView.addJavascriptObject(new LocationApi(this), "locationApi");
+
         mDWebView.loadUrl("file:///android_asset/dist/index.html");//js-call-native.html");
+        //mDWebView.loadUrl("file:///android_asset/js-call-native.html");
 
         getSupportActionBar().hide();
     }
