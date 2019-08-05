@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Environment;
 import android.webkit.JavascriptInterface;
 import android.widget.Toast;
 
@@ -15,8 +17,14 @@ import androidx.core.app.ActivityCompat;
 import com.cannon.hy.activity.CameraActivity;
 import com.cannon.hy.activity.JsCallNativeActivity;
 import com.cannon.hy.activity.ScanActivity;
+import com.cannon.hy.utils.JsonUtils;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+
+import org.devio.takephoto.app.TakePhotoActivity;
+
+import java.io.File;
+import java.util.List;
 
 import wendu.dsbridge.CompletionHandler;
 
@@ -27,9 +35,12 @@ public class CameraApi {
     
     private Context mContext;
     private CompletionHandler<String> completionHandler;
+    private CameraActionListener mCameraActionListener;
 
-    public CameraApi(Context mContext) {
+    public CameraApi(Context mContext,CameraActionListener mCameraActionListener) {
         this.mContext = mContext;
+        this.mCameraActionListener = mCameraActionListener;
+
     }
 
     /**
@@ -67,6 +78,7 @@ public class CameraApi {
         }
     }
 
+
     private void startScan(){
         IntentIntegrator integrator = new IntentIntegrator((Activity) mContext);
         integrator.setPrompt("");
@@ -94,11 +106,40 @@ public class CameraApi {
      * @param obj
      */
     @JavascriptInterface
-    public void takePhoto(Object obj){
-        mContext.startActivity(new Intent(mContext, CameraActivity.class));
+    public void takePhoto(Object obj,CompletionHandler<String> completionHandler){
+        this.completionHandler  = completionHandler;
+        mCameraActionListener.takePhoto();
+    }
+
+    /**
+     * 选择图片
+     * @param obj
+     */
+    @JavascriptInterface
+    public void selectPhoto(Object obj,CompletionHandler<String> completionHandler){
+        this.completionHandler  = completionHandler;
+        mCameraActionListener.selectPhoto();
+    }
+
+    @JavascriptInterface
+    public void selectMultiplePhoto(Object obj,CompletionHandler<String> completionHandler){
+        this.completionHandler  = completionHandler;
+        mCameraActionListener.selectMultiplePhoto(Integer.parseInt(String.valueOf(obj)));
+    }
+
+
+    public void callBackPath(List<String> path){
+        if(completionHandler!=null){
+            completionHandler.complete(JsonUtils.toJson(path));
+        }
 
     }
 
+    public interface CameraActionListener{
+        void takePhoto();
+        void selectPhoto();
+        void selectMultiplePhoto(int limit);
+    }
 
 
 }

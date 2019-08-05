@@ -256,7 +256,7 @@ public class DWebView extends WebView {
             CookieManager.getInstance().setAcceptThirdPartyCookies(this, true);
             settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         }
-        settings.setAllowFileAccess(false);
+        settings.setAllowFileAccess(true);
         settings.setAppCacheEnabled(false);
         settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
         settings.setJavaScriptEnabled(true);

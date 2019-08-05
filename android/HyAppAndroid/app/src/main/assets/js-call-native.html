@@ -45,7 +45,9 @@
 <body>
 
 <div id="app">
-    <div class="btn" onclick="takePhoto()">拍照</div>
+    <div id="takePhotoBtn" class="btn" onclick="takePhoto()">拍照</div>
+    <div id="selectPhotoBtn" class="btn" onclick="selectPhoto()">选择图片</div>
+    <div id="selectMultiplePhotoBtn" class="btn" onclick="selectMultiplePhoto()">选择多张图片</div>
     <div id="qrCodeBtn" class="btn" onclick="scanQrCode()">扫描二维码</div>
     <div id="locationBtn" class="btn" onclick="getLocationInfo()">获取定位信息</div>
     <div class="btn" onclick="createTable()">创建表</div>
@@ -54,15 +56,36 @@
 
     <input id="qrCodeET" class="editText" v-model="message" placeholder="edit me">
     <p>扫描结果 : {{ message }}</p>
+    <img id="imageView" width="107" height="98"/>
 
 </div>
 
 <script>
 
     function takePhoto(){
-          dsBridge.call("cameraApi.takePhoto","拍照");
+          dsBridge.call("cameraApi.takePhoto","拍照",function (value) {
+
+             document.getElementById("takePhotoBtn").innerHTML = (value);
+             document.getElementById("imageView").src = "file://" +  JSON.parse(value)[0];
+
+        })
     }
 
+    function selectPhoto(){
+          dsBridge.call("cameraApi.selectPhoto","选择图片",function (value) {
+
+             document.getElementById("selectPhotoBtn").innerHTML = (value);
+
+        })
+    }
+
+    function selectMultiplePhoto(){
+         //参数 5 为图片张数
+         dsBridge.call("cameraApi.selectMultiplePhoto","5",function (value) {
+             document.getElementById("selectMultiplePhotoBtn").innerHTML = (value);
+
+        })
+    }
 
     function scanQrCode(){
           dsBridge.call("cameraApi.scanQrCode","二维码扫描",function (value) {

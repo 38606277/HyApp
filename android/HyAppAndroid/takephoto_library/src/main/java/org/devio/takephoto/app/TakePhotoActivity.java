@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import org.devio.takephoto.model.InvokeParam;
 import org.devio.takephoto.permission.PermissionManager;
 import org.devio.takephoto.permission.TakePhotoInvocationHandler;
@@ -22,7 +24,7 @@ import org.devio.takephoto.permission.InvokeListener;
  * GitHub:https://github.com/crazycodeboy
  * Email:crazycodeboy@gmail.com
  */
-public class TakePhotoActivity extends Activity implements TakePhoto.TakeResultListener, InvokeListener {
+public class TakePhotoActivity extends AppCompatActivity implements TakePhoto.TakeResultListener, InvokeListener {
     private static final String TAG = TakePhotoActivity.class.getName();
     private TakePhoto takePhoto;
     private InvokeParam invokeParam;
