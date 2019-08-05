@@ -4,7 +4,7 @@
     <div v-if="loading" class="loading">
       <van-loading type="spinner" />
     </div>
-   <van-nav-bar
+    <van-nav-bar
       title="资产地图"
       left-text="返回"
       left-arrow
@@ -63,27 +63,34 @@ export default {
   data() {
     return {
       center: [116.42792, 39.902896], //经度+纬度
-      search_key: "", //搜索值
+      search_key: '', //搜索值
       lists: [], //地点列表
       search_list: [], //搜索结果列表
-      marker: "",
+      marker: '',
       loading: false,
       noSearchShow: false //无搜索结果提示，无搜索结果时会显示暂无搜索结果
     };
   },
   mounted() {
-    setTimeout(() => {
-      this.adMap();
+    var self = this;
+
+    dsBridge.call('locationApi.getLocationInfo', '获取定位信息', function(value) {
+     alert(value); 
+     self.center = value;
+      setTimeout(() => {
+      self.adMap();
     }, 1000);
+    });
+   
   },
   methods: {
-      goHome() {
+    goHome() {
       this.$router.push('/');
     },
     adMap() {
       this.loading = true;
       //初始化地图
-      var map = new AMap.Map("container", {
+      var map = new AMap.Map('container', {
         zoom: 14, //缩放级别
         center: this.center //设置地图中心点
         //resizeEnable: true,  //地图初始化加载定位到当前城市
@@ -117,50 +124,45 @@ export default {
       };
 
       // 绑定事件移动地图事件
-      map.on("mapmove", moveendFun); //更新标记
-      map.on("moveend", centerSearch); //更新数据
+      map.on('mapmove', moveendFun); //更新标记
+      map.on('moveend', centerSearch); //更新数据
     },
     centerSearch() {
-      AMap.service(["AMap.PlaceSearch"], () => {
+      AMap.service(['AMap.PlaceSearch'], () => {
         //构造地点查询类
         var placeSearch = new AMap.PlaceSearch({
           type:
-            "汽车服务|餐饮服务|购物服务|生活服务|体育休闲服务|医疗保健服务|住宿服务|风景名胜|商务住宅|政府机构及社会团体|科教文化服务|交通设施服务|金融保险服务|公司企业|地名地址信息", // 兴趣点类别
+            '汽车服务|餐饮服务|购物服务|生活服务|体育休闲服务|医疗保健服务|住宿服务|风景名胜|商务住宅|政府机构及社会团体|科教文化服务|交通设施服务|金融保险服务|公司企业|地名地址信息', // 兴趣点类别
           pageSize: 30, // 单页显示结果条数
           pageIndex: 1, // 页码
-          city: "全国", // 兴趣点城市
+          city: '全国', // 兴趣点城市
           autoFitView: false // 是否自动调整地图视野使绘制的 Marker点都处于视口的可见范围
         });
         //根据地图中心点查附近地点
-        placeSearch.searchNearBy(
-          "",
-          [this.center[0], this.center[1]],
-          200,
-          (status, result) => {
-            if (status == "complete") {
-              this.lists = result.poiList.pois; //将查询到的地点赋值
-              this.loading = false;
-            }
+        placeSearch.searchNearBy('', [this.center[0], this.center[1]], 200, (status, result) => {
+          if (status == 'complete') {
+            this.lists = result.poiList.pois; //将查询到的地点赋值
+            this.loading = false;
           }
-        );
+        });
       });
     },
     keySearch() {
       this.loading = true;
-      AMap.service(["AMap.PlaceSearch"], () => {
+      AMap.service(['AMap.PlaceSearch'], () => {
         //构造地点查询类
         var placeSearch = new AMap.PlaceSearch({
           type:
-            "汽车服务|餐饮服务|购物服务|生活服务|体育休闲服务|医疗保健服务|住宿服务|风景名胜|商务住宅|政府机构及社会团体|科教文化服务|交通设施服务|金融保险服务|公司企业|地名地址信息", // 兴趣点类别
+            '汽车服务|餐饮服务|购物服务|生活服务|体育休闲服务|医疗保健服务|住宿服务|风景名胜|商务住宅|政府机构及社会团体|科教文化服务|交通设施服务|金融保险服务|公司企业|地名地址信息', // 兴趣点类别
           pageSize: 30, // 单页显示结果条数
           pageIndex: 1, // 页码
-          city: "全国", // 兴趣点城市
+          city: '全国', // 兴趣点城市
           citylimit: false, //是否强制限制在设置的城市内搜索
           autoFitView: false // 是否自动调整地图视野使绘制的 Marker点都处于视口的可见范围
         });
         //关键字查询
         placeSearch.search(this.search_key, (status, result) => {
-          if (status == "complete") {
+          if (status == 'complete') {
             if (result.poiList.count === 0) {
               this.noSearchShow = true;
             } else {
@@ -180,10 +182,10 @@ export default {
       this.marker.setPosition([e.location.lng, e.location.lat]); //更新标记的位置
     },
     onSearchLi(e) {
-      console.log(e.lng + "-" + e.lat);
+      console.log(e.lng + '-' + e.lat);
       this.center = [e.lng, e.lat];
       console.log(this.center);
-      this.search_key = "";
+      this.search_key = '';
       // this.loading=true;
       setTimeout(() => {
         this.adMap();
@@ -192,7 +194,7 @@ export default {
   },
   watch: {
     search_key(newv, oldv) {
-      if (newv == "") {
+      if (newv == '') {
         this.search_list = [];
         this.noSearchShow = false;
         setTimeout(() => {
