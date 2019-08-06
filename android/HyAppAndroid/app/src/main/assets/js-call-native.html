@@ -54,6 +54,9 @@
     <div class="btn" onclick="addUser()">添加用户信息</div>
     <div id="queryUserListBtn" class="btn" onclick="queryUserList()">查询所有用户</div>
     <div id="requestBtn" class="btn" onclick="requestGet()">Post网路请求</div>
+    <div id="selectContactBtn" class="btn" onclick="selectContact()">选择联系人</div>
+    <div id="callPhoneBtn" class="btn" onclick="callPhone()">拨打电话</div>
+    <div id="openPhoneViewBtn" class="btn" onclick="openPhoneView()">打开电话拨打界面</div>
 
     <input id="qrCodeET" class="editText" v-model="message" placeholder="edit me">
     <p>扫描结果 : {{ message }}</p>
@@ -139,6 +142,21 @@
             dsBridge.call("requestApi.request",json,function (value) {
             document.getElementById("requestBtn").innerHTML = (value);
         })
+    }
+
+    //选择手机联系人
+    function selectContact(){
+
+    }
+
+    //拨打电话
+    function callPhone(){
+            dsBridge.call("intentApi.callPhone","18070075106");
+    }
+
+    //打开电话拨打界面
+    function openPhoneView(){
+            dsBridge.call("intentApi.openPhoneView","18070075106");
     }
 
 </script>

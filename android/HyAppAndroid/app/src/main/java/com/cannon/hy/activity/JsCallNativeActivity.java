@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.cannon.hy.R;
 import com.cannon.hy.api.CameraApi;
 import com.cannon.hy.api.DBApi;
+import com.cannon.hy.api.IntentApi;
 import com.cannon.hy.api.LocationApi;
 import com.cannon.hy.api.NetworkRequestApi;
 import com.cannon.hy.helper.DBHelper;
@@ -45,9 +46,10 @@ public class JsCallNativeActivity extends TakePhotoActivity implements CameraApi
         mDWebView.addJavascriptObject(cameraApi = new CameraApi(this,this), "cameraApi");
         mDWebView.addJavascriptObject(new LocationApi(this), "locationApi");
         mDWebView.addJavascriptObject(new NetworkRequestApi(), "requestApi");
+        mDWebView.addJavascriptObject(new IntentApi(this), "intentApi");
 
         mDWebView.loadUrl("file:///android_asset/dist/index.html");//js-call-native.html");
-//        mDWebView.loadUrl("file:///android_asset/js-call-native.html");
+//       mDWebView.loadUrl("file:///android_asset/js-call-native.html");
 
         getSupportActionBar().hide();
 
