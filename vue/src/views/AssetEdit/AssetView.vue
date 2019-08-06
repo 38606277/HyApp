@@ -35,7 +35,8 @@
       <van-field v-model="username" clearable label="资产型号" @click-right-icon="$toast('question')" />
       <van-cell title="所属部门" is-link />
 
-      <van-uploader v-model="fileList" multiple />
+      <van-image class="selectimg" width="50" height="50" @click="takePhoto()" :src='imageURL' />
+      <van-image class="selectimg" width="50" height="50" @click="selectPhoto()"       :src="imageURL1"/>
       <van-field v-model="username" clearable label="资产原值" @click-right-icon="$toast('question')" />
       <van-field v-model="username" clearable label="累计折旧" @click-right-icon="$toast('question')" />
       <van-button type="primary" size="large" @click="saveClick()">保存</van-button>
@@ -54,7 +55,8 @@ export default {
     return {
       fileList: [{ url: 'https://img.yzcdn.cn/vant/cat.jpeg' }],
       tagCode: 'aaa',
-      imageURL: '../../images/good/pic-7.jpg',
+      imageURL: require('../../images/icon/plus.png'),
+      imageURL1:require('../../images/icon/plus.png'),
       value1: 0,
       value2: 0,
       value3: 'a',
@@ -66,7 +68,7 @@ export default {
 
   methods: {
     goHome() {
-      this.$router.push('/');
+      this.$router.push('/Home');
     },
 
     onClickRight() {
@@ -79,6 +81,26 @@ export default {
         self.tagCode = value;
       });
     },
+    takePhoto() {
+      var self = this;
+      alert('takePhoto');
+      dsBridge.call('cameraApi.takePhoto', '拍照', function(value) {
+        alert(value);
+        self.imageURL='file://' + JSON.parse(value)[0];
+        // document.getElementById('imageView').src = 'file://' + JSON.parse(value)[0];
+      });
+    },
+    selectPhoto(){
+        var self = this;
+          alert('selectPhoto');
+          dsBridge.call("cameraApi.selectPhoto","选择图片",function (value) {
+           alert(value);
+            self.imageURL1='file://' + JSON.parse(value)[0];
+            //  document.getElementById("selectPhotoBtn").innerHTML = (value);
+
+        })
+    },
+
     saveClick() {
       this.tagCode = 'bbb';
     }
@@ -108,5 +130,9 @@ export default {
 
 .user-group {
   margin-bottom: 0.3rem;
+}
+
+.selectimg{
+  padding :15px;
 }
 </style>

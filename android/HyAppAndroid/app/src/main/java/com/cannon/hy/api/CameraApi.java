@@ -105,7 +105,7 @@ public class CameraApi {
      * 拍照
      * @param obj
      */
-    @JavascriptInterface
+    @JavascriptInterface @Javascrip
     public void takePhoto(Object obj,CompletionHandler<String> completionHandler){
         this.completionHandler  = completionHandler;
         mCameraActionListener.takePhoto();

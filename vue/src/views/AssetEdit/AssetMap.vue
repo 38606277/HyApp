@@ -74,18 +74,20 @@ export default {
   mounted() {
     var self = this;
 
+      setTimeout(() => {
+      this.adMap();
+    }, 1000);
+
     dsBridge.call('locationApi.getLocationInfo', '获取定位信息', function(value) {
      alert(value); 
-     self.center = value;
-      setTimeout(() => {
-      self.adMap();
-    }, 1000);
+     self.center=value;
+    
     });
    
   },
   methods: {
     goHome() {
-      this.$router.push('/');
+      this.$router.push('/Home');
     },
     adMap() {
       this.loading = true;

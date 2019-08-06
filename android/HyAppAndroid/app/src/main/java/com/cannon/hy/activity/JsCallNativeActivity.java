@@ -44,7 +44,7 @@ public class JsCallNativeActivity extends TakePhotoActivity implements CameraApi
         mDWebView.addJavascriptObject(new LocationApi(this), "locationApi");
 
         mDWebView.loadUrl("file:///android_asset/dist/index.html");//js-call-native.html");
-       // mDWebView.loadUrl("file:///android_asset/js-call-native.html");
+//        mDWebView.loadUrl("file:///android_asset/js-call-native.html");
 
         getSupportActionBar().hide();
 

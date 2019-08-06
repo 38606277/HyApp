@@ -40,6 +40,8 @@ export default {
     .title
       margin-left 6px
       font-weight 700
+      font-size 16px
+      
 
     .describe
       font-size 12px

@@ -47,33 +47,34 @@ export default {
   },
   methods: {
     login() {
-      this.userNameErr = '';
-      this.passwordErr = '';
-      this.loading = true;
-      if (!emailCheck(this.userName)) {
-        this.userNameErr = '邮箱格式不正确';
-        this.loading = false;
-        return;
-      }
-      if (!pwdCheck(this.password)) {
-        this.passwordErr = '密码格式不正确';
-        this.loading = false;
-        return;
-      }
-      login({ userName: this.userName, password: MD5(this.password).toString() })
-        .then(res => {
-          if (res.status === 200) {
-            this.loading = false;
-            this.$router.push('/');
-          } else {
-            this.loading = false;
-            Toast.fail(res.msg);
-          }
-        })
-        .catch(error => {
-          Toast.fail(error);
-          this.loading = false;
-        });
+      this.$router.push('/Home');
+      // this.userNameErr = '';
+      // this.passwordErr = '';
+      // this.loading = true;
+      // if (!emailCheck(this.userName)) {
+      //   this.userNameErr = '邮箱格式不正确';
+      //   this.loading = false;
+      //   return;
+      // }
+      // if (!pwdCheck(this.password)) {
+      //   this.passwordErr = '密码格式不正确';
+      //   this.loading = false;
+      //   return;
+      // }
+      // login({ userName: this.userName, password: MD5(this.password).toString() })
+      //   .then(res => {
+      //     if (res.status === 200) {
+      //       this.loading = false;
+      //       this.$router.push('/');
+      //     } else {
+      //       this.loading = false;
+      //       Toast.fail(res.msg);
+      //     }
+      //   })
+      //   .catch(error => {
+      //     Toast.fail(error);
+      //     this.loading = false;
+      //   });
     },
     reg() {
       this.$router.push('/reg');

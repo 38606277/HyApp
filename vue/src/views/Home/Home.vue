@@ -19,10 +19,11 @@
         </van-swipe-item>
       </van-swipe>
       <!-- <div class="recommend-title">功能</div> -->
-      <van-grid :column-num="3">
+
+      <van-grid :column-num="4">
         <van-grid-item key="1" to="/AssetList">
           <img class="function-item" src="@/images/icon/f3dd6c383aeb3b02.png" />
-          <div class="van-grid-item__text">个人资产展示</div>
+          <div class="van-grid-item__text">我的资产</div>
         </van-grid-item>
         <van-grid-item key="2" to="/AssetView">
           <img class="function-item" src="@/images/icon/13ceb38dcf262f02.png" />
@@ -32,7 +33,7 @@
           <img class="function-item" src="@/images/icon/c70f1e85ae4a4f02.png" />
           <div class="van-grid-item__text">资产地图</div>
         </van-grid-item>
-        <van-grid-item key="4" to="/AssetEdit">
+        <van-grid-item key="4" to="/AssetList">
           <img class="function-item" src="@/images/icon/6f7d6e44963c9302.png" />
           <div class="van-grid-item__text">盘点</div>
         </van-grid-item>
@@ -44,9 +45,18 @@
           <img class="function-item" src="@/images/icon/26ffa31b56646402.png" />
           <div class="van-grid-item__text">资产分析</div>
         </van-grid-item>
-
+        <van-grid-item key="5" to="/AssetView">
+          <img class="function-item" src="@/images/icon/fdf170ee89594b02.png" />
+          <div class="van-grid-item__text">资产调拨</div>
+        </van-grid-item>
+        <van-grid-item key="6" to="/AssetMap">
+          <img class="function-item" src="@/images/icon/26ffa31b56646402.png" />
+          <div class="van-grid-item__text">资产分析</div>
+        </van-grid-item>
       </van-grid>
     </div>
+    <good-item title="我的任务" describe moreRoute="/more/1" class="good"></good-item>
+    <div id="echartContainer" style="width:100%; height:250px;" class="chart"></div>
   </div>
 </template>
 
@@ -58,7 +68,7 @@ import tabItem from '@/components/tabItem/tabItem';
 import { hotSale, saleGroup, discover } from '@/api/api';
 import { mapMutations } from 'vuex';
 import { Grid, GridItem } from 'vant';
-
+var echarts = require('echarts');
 export default {
   name: 'Home',
   data() {
@@ -71,27 +81,26 @@ export default {
     };
   },
   mounted() {
-    hotSale()
-      .then(result => {
-        this.hotGoods = result.data;
-      })
-      .catch(error => {
-        console.log(error);
-      });
-    saleGroup()
-      .then(result => {
-        this.saleGroupGoods = result.data;
-      })
-      .catch(error => {
-        console.log(error);
-      });
-    discover()
-      .then(result => {
-        this.discoverGoods = result.data;
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('echartContainer'));
+
+    // 绘制图表
+    myChart.setOption({
+      backgroundColor:'white',
+      xAxis: {
+        type: 'category',
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: [
+        {
+          data: [820, 932, 901, 934, 1290, 1330, 1320],
+          type: 'line'
+        }
+      ]
+    });
   },
   components: {
     goodItem,
@@ -99,17 +108,7 @@ export default {
     backgroundImg,
     tabItem
   },
-  computed: {
-    goodItems() {
-      return {
-        推荐: this.hotGoods,
-        拼团: this.saleGroupGoods,
-        低价: this.discoverGoods,
-        发现: this.hotGoods,
-        火爆: this.saleGroupGoods
-      };
-    }
-  },
+  computed: {},
   methods: {
     onSearch() {
       console.log('onSearch');
@@ -247,6 +246,14 @@ export default {
     height: 1px;
     margin: 0 8px;
     background-color: #000;
+  }
+
+  .chart {
+    background-color: #fff;
+  }
+
+  .good {
+    font-size: 18px;
   }
 }
 </style>
