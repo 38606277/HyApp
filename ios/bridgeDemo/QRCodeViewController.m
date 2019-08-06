@@ -7,10 +7,9 @@
 //
 
 #import "QRCodeViewController.h"
-#import "MyQRCodeTools.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface QRCodeViewController ()
+@interface QRCodeViewController ()<AVCaptureMetadataOutputObjectsDelegate>
 /** 回话对象属性*/
 @property (nonatomic, strong) AVCaptureSession *session;
 
@@ -24,7 +23,6 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     // Do any additional setup after loading the view.
-    MyQRCodeTools *tools = [[MyQRCodeTools alloc]init];
     // 创建回话对象
     self.session = [[AVCaptureSession alloc] init];
     
@@ -59,7 +57,7 @@
     
     self.previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     
-    self.previewLayer.frame = self.view.frame;
+    self.previewLayer.frame = CGRectMake(self.view.center.x - 100, self.view.center.y - 100, 200, 200);
     
     // 将图层插入当前图层
     [self.view.layer insertSublayer:self.previewLayer atIndex:0];
@@ -81,7 +79,8 @@
         AVMetadataMachineReadableCodeObject *obj = metadataObjects.firstObject;
         // 取出二维码扫描到的内容
         NSLog(@"二维码内容：：：%@",obj.stringValue);
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"QRCode" object:obj.stringValue];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"QRCode" object:obj.stringValue];
+        self.resultBlock(obj.stringValue, YES);
         [self.navigationController popViewControllerAnimated:YES];
     }
 }

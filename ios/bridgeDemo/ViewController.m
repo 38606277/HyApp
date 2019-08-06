@@ -18,8 +18,10 @@
 #import <Reachability.h>
 #import <ContactsUI/ContactsUI.h>
 #import "MyRecordTools.h"
+#import "MyLocationTest.h"
+#import "LocationViewController.h"
 
-@interface ViewController ()<WKUIDelegate,CLLocationManagerDelegate,CNContactPickerDelegate,CNContactViewControllerDelegate>
+@interface ViewController ()<WKUIDelegate,CLLocationManagerDelegate,CNContactPickerDelegate,CNContactViewControllerDelegate,WKNavigationDelegate>
     
 @property (nonatomic, strong) CLLocationManager *locationManager;//设置manager
 @property (nonatomic, strong) NSString *currentCity;
@@ -44,18 +46,18 @@
     l.numberOfLines = 0;
     l.textColor = [UIColor blackColor];
     [self.view addSubview:l];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showImage:) name:@"photo" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showQRCode:) name:@"QRCode" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showImage:) name:@"photo" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showQRCode:) name:@"QRCode" object:nil];
 }
 
-- (void)showQRCode:(NSNotification *)noti{
-    self.l.text = (NSString *)noti.object;
-}
-
-- (void)showImage:(NSNotification *)noti{
-    UIImage *image = noti.object;
-    self.im.image = image;
-}
+//- (void)showQRCode:(NSNotification *)noti{
+//    self.l.text = (NSString *)noti.object;
+//}
+//
+//- (void)showImage:(NSNotification *)noti{
+//    UIImage *image = noti.object;
+//    self.im.image = image;
+//}
 
 - (void)checkNet:(NSString *)msg :(JSCallback)completion{
     NetworkStatus status = [NetworkTools isConnectionAvailable];
@@ -109,7 +111,6 @@
         return [self getTopViewController:[(UINavigationController *)vc topViewController]];
     } else if ([vc isKindOfClass:[UITabBarController class]]) {
         return [self getTopViewController:[(UITabBarController *)vc selectedViewController]];
-        
     } else {
         return vc;
     }
@@ -125,7 +126,6 @@
         [self.locationManager requestAlwaysAuthorization];//位置权限申请
         [self.locationManager startUpdatingLocation];//开始定位
     }
-        completion(@"111",YES);
 }
 
 
@@ -135,11 +135,14 @@
     dwebview=[[DWKWebView alloc] initWithFrame:CGRectMake(0, 25, bounds.size.width, bounds.size.height-25)];
     [self.view addSubview:dwebview];
     
-    [dwebview addJavascriptObject:[[MyDataBaseTest alloc] init] namespace:@"database"];
+    [dwebview addJavascriptObject:[[MyDataBaseTest alloc] init] namespace:@"dbApi"];
     [dwebview addJavascriptObject:[[ViewController alloc] init] namespace:@"photo"];
     [dwebview addJavascriptObject:[[ViewController alloc] init] namespace:@"my"];
-    [dwebview addJavascriptObject:[[MyQRCodeTools alloc] init] namespace:@"QRCode"];
+    [dwebview addJavascriptObject:[[MyQRCodeTools alloc] init] namespace:@"cameraApi"];
+    [dwebview addJavascriptObject:[[MyLocationTest alloc] init] namespace:@"locationApi"];
+//    [dwebview addJavascriptObject:[[LocationViewController alloc] init] namespace:@"locationApi"];
     // open debug mode, Release mode should disable this.
+    dwebview.allowsBackForwardNavigationGestures = YES;
     [dwebview setDebugMode:true];
     
 //    [dwebview customJavascriptDialogLabelTitles:@{@"alertTitle":@"Notification",@"alertBtn":@"OK"}];
@@ -147,23 +150,16 @@
     dwebview.navigationDelegate=self;
     
     // load test.html
-    NSString *path = [[NSBundle mainBundle] bundlePath];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"hhhhhBD" ofType:@"bundle"];
     NSURL *baseURL = [NSURL fileURLWithPath:path];
-    NSString * htmlPath = [[NSBundle mainBundle] pathForResource:@"test"
-                                                          ofType:@"html"];
+    NSBundle *bundle = [NSBundle bundleWithPath:path];
+    NSString * htmlPath = [bundle pathForResource:@"index" ofType:@"html"];
     NSString * htmlContent = [NSString stringWithContentsOfFile:htmlPath
                                                        encoding:NSUTF8StringEncoding
                                                           error:nil];
+    NSLog(@"%@",path);
+    NSLog(@"%@",htmlPath);
     [dwebview loadHTMLString:htmlContent baseURL:baseURL];
-    
-    
-    UIButton *b = [UIButton buttonWithType:UIButtonTypeCustom];
-    [b setTitle:@"调h5" forState:UIControlStateNormal];
-    b.backgroundColor = [UIColor blackColor];
-    [b setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    [b addTarget:self action:@selector(hehehe:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:b];
-    b.frame = CGRectMake(100, 500, 40, 40);
 }
     
 - (void)hehehe:(UIButton *)sender{
@@ -223,7 +219,7 @@
                 self.currentCity = placeMark.locality ;//获取当前城市
                 static dispatch_once_t onceToken;
                 dispatch_once(&onceToken, ^{
-                    UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"native" message:[NSString stringWithFormat:@"当前地点%@",placeMark.locality] delegate:self cancelButtonTitle:@"cancle" otherButtonTitles:nil, nil];
+                    UIAlertView *av = [[UIAlertView alloc]initWithTitle:@"native" message:[NSString stringWithFormat:@"当前地点%@%@%@%@",placeMark.locality,placeMark.subLocality,placeMark.thoroughfare,placeMark.name] delegate:self cancelButtonTitle:@"cancle" otherButtonTitles:nil, nil];
                     [av show];
                 });
             }
@@ -246,7 +242,6 @@
     [dwebview evaluateJavaScript:@"addValue(3,4)" completionHandler:^(id _Nullable result, NSError * _Nullable error) {
         NSLog(@"result:%@,error:%@",result,error);
     }];
-    
 }
 
 @end

@@ -26,6 +26,9 @@
 		572DFCE922EAFCBA00D4B030 /* DataBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFCE822EAFCBA00D4B030 /* DataBaseTableViewController.m */; };
 		572DFD6D22F3DA2400D4B030 /* MyQRCodeTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFD6C22F3DA2400D4B030 /* MyQRCodeTools.m */; };
 		572DFD7022F3DB6A00D4B030 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFD6F22F3DB6A00D4B030 /* ImageViewController.m */; };
+		5792222822F81BD0003BBA2D /* hhhhhBD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5792222722F81BD0003BBA2D /* hhhhhBD.bundle */; };
+		5792222B22F82B01003BBA2D /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5792222A22F82B01003BBA2D /* LocationViewController.m */; };
+		5792222D22F831CE003BBA2D /* AMapLocationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5792222C22F831CE003BBA2D /* AMapLocationKit.framework */; };
 		9680502D43B9780551EC91F1 /* Pods_bridgeDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 028BAAC921FE918E76E72479 /* Pods_bridgeDemoTests.framework */; };
 		A6E7B457F067A4FEF6895B52 /* Pods_bridgeDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5B4D425295524194C86DBB /* Pods_bridgeDemo.framework */; };
 		B040B9B34542839322AC42CD /* Pods_bridgeDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD9322D3D6B5EF779B92FCC /* Pods_bridgeDemoUITests.framework */; };
@@ -90,6 +93,10 @@
 		572DFD6C22F3DA2400D4B030 /* MyQRCodeTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyQRCodeTools.m; sourceTree = "<group>"; };
 		572DFD6E22F3DB6A00D4B030 /* ImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
 		572DFD6F22F3DB6A00D4B030 /* ImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
+		5792222722F81BD0003BBA2D /* hhhhhBD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = hhhhhBD.bundle; sourceTree = "<group>"; };
+		5792222922F82B01003BBA2D /* LocationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
+		5792222A22F82B01003BBA2D /* LocationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
+		5792222C22F831CE003BBA2D /* AMapLocationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AMapLocationKit.framework; path = ../../../Downloads/AMap_iOS_Loc_ALL/AMapLocationKit.framework; sourceTree = "<group>"; };
 		A73F29DDD6E6D401DD721AEA /* Pods-bridgeDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bridgeDemoUITests.debug.xcconfig"; path = "Target Support Files/Pods-bridgeDemoUITests/Pods-bridgeDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C0B67F3DAEC870CDD0623837 /* Pods-bridgeDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bridgeDemoUITests.release.xcconfig"; path = "Target Support Files/Pods-bridgeDemoUITests/Pods-bridgeDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DCFF665FF3D5FC29EF780C89 /* Pods-bridgeDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bridgeDemo.debug.xcconfig"; path = "Target Support Files/Pods-bridgeDemo/Pods-bridgeDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -102,6 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5792222D22F831CE003BBA2D /* AMapLocationKit.framework in Frameworks */,
 				A6E7B457F067A4FEF6895B52 /* Pods_bridgeDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -150,6 +158,7 @@
 		572DFCA222EAA42D00D4B030 /* bridgeDemo */ = {
 			isa = PBXGroup;
 			children = (
+				5792222722F81BD0003BBA2D /* hhhhhBD.bundle */,
 				572DFCA322EAA42D00D4B030 /* AppDelegate.h */,
 				572DFCA422EAA42D00D4B030 /* AppDelegate.m */,
 				572DFCA622EAA42D00D4B030 /* ViewController.h */,
@@ -164,6 +173,8 @@
 				572DFD6C22F3DA2400D4B030 /* MyQRCodeTools.m */,
 				572DFCDD22EADB2700D4B030 /* MyLocationTest.h */,
 				572DFCDE22EADB2700D4B030 /* MyLocationTest.m */,
+				5792222922F82B01003BBA2D /* LocationViewController.h */,
+				5792222A22F82B01003BBA2D /* LocationViewController.m */,
 				572DFCE722EAFCBA00D4B030 /* DataBaseTableViewController.h */,
 				572DFCE822EAFCBA00D4B030 /* DataBaseTableViewController.m */,
 				572DFD6E22F3DB6A00D4B030 /* ImageViewController.h */,
@@ -205,6 +216,7 @@
 		A5913706F5A33910E450783F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5792222C22F831CE003BBA2D /* AMapLocationKit.framework */,
 				1B5B4D425295524194C86DBB /* Pods_bridgeDemo.framework */,
 				028BAAC921FE918E76E72479 /* Pods_bridgeDemoTests.framework */,
 				2DD9322D3D6B5EF779B92FCC /* Pods_bridgeDemoUITests.framework */,
@@ -334,6 +346,7 @@
 			files = (
 				572DFCD922EACCB700D4B030 /* test.html in Resources */,
 				572DFCB022EAA42D00D4B030 /* LaunchScreen.storyboard in Resources */,
+				5792222822F81BD0003BBA2D /* hhhhhBD.bundle in Resources */,
 				572DFCAD22EAA42D00D4B030 /* Assets.xcassets in Resources */,
 				572DFCAB22EAA42D00D4B030 /* Main.storyboard in Resources */,
 			);
@@ -455,6 +468,7 @@
 				572DFCD722EAA53D00D4B030 /* Person.m in Sources */,
 				572DFCE922EAFCBA00D4B030 /* DataBaseTableViewController.m in Sources */,
 				572DFCE522EAE92800D4B030 /* ViewController+Photo.m in Sources */,
+				5792222B22F82B01003BBA2D /* LocationViewController.m in Sources */,
 				571AB02122F3E0B400F986CA /* QRCodeViewController.m in Sources */,
 				572DFCDF22EADB2700D4B030 /* MyLocationTest.m in Sources */,
 				572DFCA522EAA42D00D4B030 /* AppDelegate.m in Sources */,
@@ -638,7 +652,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = wlkenfwf.lsndkfsd;
+				PRODUCT_BUNDLE_IDENTIFIER = bridgeDemo.hhhhh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -657,7 +671,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = wlkenfwf.lsndkfsd;
+				PRODUCT_BUNDLE_IDENTIFIER = bridgeDemo.hhhhh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

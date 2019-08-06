@@ -4,21 +4,19 @@ platform :ios, '9.0'
 pod "dsBridge"
 pod "FMDB"
 pod "Reachability"
+pod "AMapLocation-NO-IDFA"
+pod "AMap3DMap-NO-IDFA"
 
 target 'bridgeDemo' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
   # Pods for bridgeDemo
-
   target 'bridgeDemoTests' do
     inherit! :search_paths
     # Pods for testing
   end
-
   target 'bridgeDemoUITests' do
     inherit! :search_paths
     # Pods for testing
   end
-
 end

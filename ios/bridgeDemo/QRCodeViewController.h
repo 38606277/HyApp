@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface QRCodeViewController : UIViewController
-
+@property (nonatomic,copy) void(^resultBlock)(id result , BOOL b);
 @end
 
 NS_ASSUME_NONNULL_END
