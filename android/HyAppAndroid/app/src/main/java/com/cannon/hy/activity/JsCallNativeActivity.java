@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.view.KeyEvent;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import com.cannon.hy.R;
 import com.cannon.hy.api.CameraApi;
 import com.cannon.hy.api.DBApi;
 import com.cannon.hy.api.LocationApi;
+import com.cannon.hy.api.NetworkRequestApi;
 import com.cannon.hy.helper.DBHelper;
 
 
@@ -42,6 +44,7 @@ public class JsCallNativeActivity extends TakePhotoActivity implements CameraApi
         mDWebView.addJavascriptObject(new DBApi(this), "dbApi");
         mDWebView.addJavascriptObject(cameraApi = new CameraApi(this,this), "cameraApi");
         mDWebView.addJavascriptObject(new LocationApi(this), "locationApi");
+        mDWebView.addJavascriptObject(new NetworkRequestApi(), "requestApi");
 
         mDWebView.loadUrl("file:///android_asset/dist/index.html");//js-call-native.html");
 //        mDWebView.loadUrl("file:///android_asset/js-call-native.html");
@@ -58,6 +61,19 @@ public class JsCallNativeActivity extends TakePhotoActivity implements CameraApi
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
+
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+            //mDWebView.callHandler("");
+            return true;
+        }
+        //继续执行父类其他点击事件
+        return super.onKeyUp(keyCode, event);
+    }
+
+        /***************** 相机实现  *********/
 
 
     /**
@@ -111,15 +127,5 @@ public class JsCallNativeActivity extends TakePhotoActivity implements CameraApi
         }
         cameraApi.callBackPath(pathList);
     }
-
-//    private void showImg(ArrayList<TImage> images) {
-//        Intent intent = new Intent(this, ResultActivity.class);
-//        intent.putExtra("images", images);
-//        startActivity(intent);
-//        finish();
-//    }
-
-
-
 
 }

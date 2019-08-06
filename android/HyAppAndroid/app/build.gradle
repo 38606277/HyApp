@@ -10,6 +10,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled = true
     }
     buildTypes {
         release {
@@ -35,11 +37,31 @@ dependencies {
     /*添加依赖 二维码扫描库 https://github.com/journeyapps/zxing-android-embedded */
     implementation 'com.journeyapps:zxing-android-embedded:3.5.0'
     implementation 'com.google.zxing:core:3.3.0'
+    implementation project(path:':takephoto_library')
 
-    implementation project(path: ':takephoto_library')
-
-
+    /* 图片加载框架 */
     implementation 'com.github.bumptech.glide:glide:3.6.0'
     //annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+
+
+
+    /* 请求网络库 https://github.com/square/retrofit   https://github.com/square/okhttp */
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+
+    //RxJava https://github.com/ReactiveX/RxJava
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+
+    //Retrofit 请求生命周期管理
+    implementation 'com.trello.rxlifecycle2:rxlifecycle:2.2.1'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-android:2.2.1'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.1'
+
+    //Retrofit 解析需要
+    implementation 'com.squareup.retrofit2:converter-scalars:2.4.0'
+    //implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
 
 }
