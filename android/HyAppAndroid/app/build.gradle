@@ -31,6 +31,7 @@ dependencies {
 
     implementation project(path: ':dsbridge')
 
+
     /* Gson框架 解析Json格式字符串 */
     implementation 'com.google.code.gson:gson:2.8.2'
 
@@ -64,4 +65,6 @@ dependencies {
     //implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
 
+    //激光推送
+    implementation project(path: ':jpush_library')
 }

@@ -1,6 +1,10 @@
 package com.cannon.hy.activity;
 
+import android.content.BroadcastReceiver;
+import android.content.ContentProvider;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -16,6 +20,7 @@ import com.cannon.hy.api.IntentApi;
 import com.cannon.hy.api.LocationApi;
 import com.cannon.hy.api.NetworkRequestApi;
 import com.cannon.hy.helper.DBHelper;
+import com.cannon.hy.manager.NotificationMgr;
 
 
 import org.devio.takephoto.app.TakePhoto;
@@ -29,6 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import wendu.dsbridge.DWebView;
+import wendu.dsbridge.OnReturnValue;
 
 public class JsCallNativeActivity extends TakePhotoActivity implements CameraApi.CameraActionListener {
     private DWebView mDWebView;
@@ -53,8 +59,29 @@ public class JsCallNativeActivity extends TakePhotoActivity implements CameraApi
 
         getSupportActionBar().hide();
 
+        //NotificationMgr.notify(this,"资产APP","这里是通知栏内容");
+        registerReceiver(broadcastReceiver,new IntentFilter("action.setContent"));
     }
 
+
+    BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            //setContent(intent.getStringExtra("content"));
+        }
+    };
+
+    public void setContent(String content){
+        if(mDWebView!=null){
+            mDWebView.callHandler("setContent", new Object[]{content}, new OnReturnValue<Integer>() {
+                @Override
+                public void onValue(Integer retValue) {
+
+                }
+            });
+        }
+
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -130,4 +157,9 @@ public class JsCallNativeActivity extends TakePhotoActivity implements CameraApi
         cameraApi.callBackPath(pathList);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(broadcastReceiver);
+    }
 }

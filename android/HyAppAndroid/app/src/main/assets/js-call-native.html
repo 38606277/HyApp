@@ -159,6 +159,13 @@
             dsBridge.call("intentApi.openPhoneView","18070075106");
     }
 
+
+    //注册Js方法给native调用
+    dsBridge.register('setContent', function (content) {
+        document.getElementById("qrCodeET").value = (content);
+        return '';
+    })
+
 </script>
 
 <script src="./index.js"/>

@@ -5,6 +5,8 @@ import android.content.Context;
 
 import androidx.multidex.MultiDex;
 
+import cn.jpush.android.api.JPushInterface;
+
 /**
  * Created by admin on 2018/3/27.
  */
@@ -17,6 +19,9 @@ public class App extends Application{
     public void onCreate() {
         super.onCreate();
         context = this.getApplicationContext();
+
+        JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
+        JPushInterface.init(this);     		// 初始化 JPush
     }
 
 

@@ -14,9 +14,15 @@ public final class LogUtils {
 
     public static void d(String msg) {
 
+        d(TAG, msg);
+    }
+
+
+    public static void d(String tag,String msg) {
+
         if (BuildConfig.DEBUG) {
-            Log.d(TAG,  "Debug信息：" + msg);
-           //showLongLog(msg,200);
+            Log.d(tag,  "Debug信息：" + msg);
+            //showLongLog(msg,200);
         }
     }
 
