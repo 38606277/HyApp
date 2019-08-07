@@ -21,6 +21,7 @@
 #import "MyQRCodeTools.h"
 #import "LocationViewController.h"
 #import "DFNetworkingManager.h"
+#import "AppDelegate.h"
 
 @interface ViewController ()<WKUIDelegate,CLLocationManagerDelegate,CNContactPickerDelegate,CNContactViewControllerDelegate,WKNavigationDelegate>
     
@@ -28,6 +29,7 @@
 @property (nonatomic, strong) NSString *currentCity;
 @property (nonatomic,strong) UIImageView *im;
 @property (nonatomic,strong) UILabel *l;
+@property (nonatomic,strong) NSDictionary *pushDic;
 @end
 
 @implementation ViewController{
@@ -47,18 +49,21 @@
     l.numberOfLines = 0;
     l.textColor = [UIColor blackColor];
     [self.view addSubview:l];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showImage:) name:@"photo" object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showQRCode:) name:@"QRCode" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushAction:) name:DemoPushNotifacationName object:nil];
 }
 
-//- (void)showQRCode:(NSNotification *)noti{
-//    self.l.text = (NSString *)noti.object;
-//}
-//
-//- (void)showImage:(NSNotification *)noti{
-//    UIImage *image = noti.object;
-//    self.im.image = image;
-//}
+- (void)pushAction:(NSNotification *)noti{
+    self.pushDic = noti.userInfo;
+    // webview已经加载完成直接callJS 未加载完成走完成的webview代理  未验证
+    NSValue *first = self.pushDic[@"first"];
+    NSValue *second = self.pushDic[@"second"];
+        if (first != nil && second != nil) {
+            [self.dwebview callHandler:@"addValue" arguments:@[first,second] completionHandler:^(id  _Nullable value) {
+                UIAlertView *v = [[UIAlertView alloc]initWithTitle:@"notifation" message:value delegate:self cancelButtonTitle:@"cancle" otherButtonTitles:nil, nil];
+                [v show];
+            }];
+        }
+}
 
 - (void)checkNet:(NSString *)msg :(JSCallback)completion{
     NetworkStatus status = [NetworkTools isConnectionAvailable];
@@ -251,6 +256,20 @@
     [self.dwebview evaluateJavaScript:@"addValue(3,4)" completionHandler:^(id _Nullable result, NSError * _Nullable error) {
         NSLog(@"result:%@,error:%@",result,error);
     }];
+}
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
+    NSNumber *first = self.pushDic[@"first"];
+    NSNumber *second = self.pushDic[@"second"];
+    if ([webView isKindOfClass:[DWKWebView class]]) {
+        DWKWebView *wv = (DWKWebView*)webView;
+        if (first != nil && second != nil) {
+            [wv callHandler:@"addValue" arguments:@[first,second] completionHandler:^(id  _Nullable value) {
+                UIAlertView *v = [[UIAlertView alloc]initWithTitle:@"didfinish" message:value delegate:self cancelButtonTitle:@"cancle" otherButtonTitles:nil, nil];
+                [v show];
+            }];
+        }
+    }
 }
 
 @end

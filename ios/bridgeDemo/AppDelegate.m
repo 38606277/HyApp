@@ -15,6 +15,7 @@
 #import "ViewController.h"
 #endif
 
+NSString * const DemoPushNotifacationName = @"DemoPushNotifacationName";
 @interface AppDelegate ()<JPUSHRegisterDelegate>
 
 @end
@@ -157,11 +158,11 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 //    if (target_url != nil) {
 //        [self openWebViewWithURL:target_url];
 //    }
-    ViewController *vc = [self selectVC];
-    [vc.dwebview callHandler:@"addValue" arguments:@[@3,@4] completionHandler:^(NSNumber* value){
-        UIAlertView *v = [[UIAlertView alloc]initWithTitle:@"回调结果" message:value.stringValue delegate:self cancelButtonTitle:@"cancle" otherButtonTitles:nil, nil];
-        [v show];
-    }];
+//    ViewController *vc = [self selectVC];
+//    [vc.dwebview callHandler:@"addValue" arguments:@[@3,@4] completionHandler:^(NSNumber* value){
+//        UIAlertView *v = [[UIAlertView alloc]initWithTitle:@"回调结果" message:value.stringValue delegate:self cancelButtonTitle:@"cancle" otherButtonTitles:nil, nil];
+//        [v show];
+//    }];
     completionHandler(UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
 }
 
@@ -179,11 +180,19 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 //        [self openWebViewWithURL:target_url];
 //    }
     completionHandler();  // 系统要求执行这个方法
-    ViewController *vc = [self selectVC];
-    [vc.dwebview callHandler:@"addValue" arguments:@[@3,@4] completionHandler:^(NSNumber* value){
-        UIAlertView *v = [[UIAlertView alloc]initWithTitle:@"回调结果" message:value.stringValue delegate:self cancelButtonTitle:@"cancle" otherButtonTitles:nil, nil];
-        [v show];
-    }];
+//    ViewController *vc = [self selectVC];
+//    [vc.dwebview callHandler:@"addValue" arguments:@[@3,@4] completionHandler:^(NSNumber* value){
+//        UIAlertView *v = [[UIAlertView alloc]initWithTitle:@"回调结果" message:value.stringValue delegate:self cancelButtonTitle:@"cancle" otherButtonTitles:nil, nil];
+//        [v show];
+//    }];
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    if (userInfo[@"first"]) {
+        [dic setObject:userInfo[@"first"] forKey:@"first"];
+    }
+    if (userInfo[@"second"]) {
+        [dic setObject:userInfo[@"second"] forKey:@"second"];
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:DemoPushNotifacationName object:nil userInfo:dic];
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
