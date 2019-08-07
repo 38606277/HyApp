@@ -6,6 +6,8 @@ pod "FMDB"
 pod "Reachability"
 pod "AMapLocation-NO-IDFA"
 pod "AMap3DMap-NO-IDFA"
+pod "AFNetworking"
+pod "JPush"
 
 target 'bridgeDemo' do
   # Comment the next line if you don't want to use dynamic frameworks

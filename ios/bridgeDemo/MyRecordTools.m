@@ -72,10 +72,8 @@
             playLimitLabel.hidden = YES;
             
             recordSecond = 0;
-//            recordTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(recordSecondChange) userInfo:nil repeats:YES];
-//            [recordTimer fire];
         }
-    }else {
+    }else{
         NSLog(@"录音创建失败");
     }
 }

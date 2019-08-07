@@ -24,11 +24,13 @@
 		572DFCDF22EADB2700D4B030 /* MyLocationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFCDE22EADB2700D4B030 /* MyLocationTest.m */; };
 		572DFCE522EAE92800D4B030 /* ViewController+Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFCE422EAE92800D4B030 /* ViewController+Photo.m */; };
 		572DFCE922EAFCBA00D4B030 /* DataBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFCE822EAFCBA00D4B030 /* DataBaseTableViewController.m */; };
-		572DFD6D22F3DA2400D4B030 /* MyQRCodeTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFD6C22F3DA2400D4B030 /* MyQRCodeTools.m */; };
 		572DFD7022F3DB6A00D4B030 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFD6F22F3DB6A00D4B030 /* ImageViewController.m */; };
+		572ED8E222F9818B004A670A /* DFNetworkingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 572ED8E122F9818A004A670A /* DFNetworkingManager.m */; };
+		572ED8E522F98263004A670A /* MyJsonFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 572ED8E422F98263004A670A /* MyJsonFormatter.m */; };
 		5792222822F81BD0003BBA2D /* hhhhhBD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5792222722F81BD0003BBA2D /* hhhhhBD.bundle */; };
 		5792222B22F82B01003BBA2D /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5792222A22F82B01003BBA2D /* LocationViewController.m */; };
 		5792222D22F831CE003BBA2D /* AMapLocationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5792222C22F831CE003BBA2D /* AMapLocationKit.framework */; };
+		5792227122F94F42003BBA2D /* MyQRCodeTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 5792226F22F94F41003BBA2D /* MyQRCodeTools.m */; };
 		9680502D43B9780551EC91F1 /* Pods_bridgeDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 028BAAC921FE918E76E72479 /* Pods_bridgeDemoTests.framework */; };
 		A6E7B457F067A4FEF6895B52 /* Pods_bridgeDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5B4D425295524194C86DBB /* Pods_bridgeDemo.framework */; };
 		B040B9B34542839322AC42CD /* Pods_bridgeDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD9322D3D6B5EF779B92FCC /* Pods_bridgeDemoUITests.framework */; };
@@ -89,14 +91,19 @@
 		572DFCE422EAE92800D4B030 /* ViewController+Photo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ViewController+Photo.m"; sourceTree = "<group>"; };
 		572DFCE722EAFCBA00D4B030 /* DataBaseTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataBaseTableViewController.h; sourceTree = "<group>"; };
 		572DFCE822EAFCBA00D4B030 /* DataBaseTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataBaseTableViewController.m; sourceTree = "<group>"; };
-		572DFD6B22F3DA2400D4B030 /* MyQRCodeTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyQRCodeTools.h; sourceTree = "<group>"; };
-		572DFD6C22F3DA2400D4B030 /* MyQRCodeTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyQRCodeTools.m; sourceTree = "<group>"; };
 		572DFD6E22F3DB6A00D4B030 /* ImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
 		572DFD6F22F3DB6A00D4B030 /* ImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
+		572ED8E022F9818A004A670A /* DFNetworkingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFNetworkingManager.h; sourceTree = "<group>"; };
+		572ED8E122F9818A004A670A /* DFNetworkingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFNetworkingManager.m; sourceTree = "<group>"; };
+		572ED8E322F98263004A670A /* MyJsonFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyJsonFormatter.h; sourceTree = "<group>"; };
+		572ED8E422F98263004A670A /* MyJsonFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyJsonFormatter.m; sourceTree = "<group>"; };
+		572ED8E622FA64D3004A670A /* bridgeDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = bridgeDemo.entitlements; sourceTree = "<group>"; };
 		5792222722F81BD0003BBA2D /* hhhhhBD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = hhhhhBD.bundle; sourceTree = "<group>"; };
 		5792222922F82B01003BBA2D /* LocationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
 		5792222A22F82B01003BBA2D /* LocationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
 		5792222C22F831CE003BBA2D /* AMapLocationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AMapLocationKit.framework; path = ../../../Downloads/AMap_iOS_Loc_ALL/AMapLocationKit.framework; sourceTree = "<group>"; };
+		5792226F22F94F41003BBA2D /* MyQRCodeTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyQRCodeTools.m; sourceTree = "<group>"; };
+		5792227022F94F42003BBA2D /* MyQRCodeTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyQRCodeTools.h; sourceTree = "<group>"; };
 		A73F29DDD6E6D401DD721AEA /* Pods-bridgeDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bridgeDemoUITests.debug.xcconfig"; path = "Target Support Files/Pods-bridgeDemoUITests/Pods-bridgeDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C0B67F3DAEC870CDD0623837 /* Pods-bridgeDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bridgeDemoUITests.release.xcconfig"; path = "Target Support Files/Pods-bridgeDemoUITests/Pods-bridgeDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DCFF665FF3D5FC29EF780C89 /* Pods-bridgeDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bridgeDemo.debug.xcconfig"; path = "Target Support Files/Pods-bridgeDemo/Pods-bridgeDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -158,6 +165,7 @@
 		572DFCA222EAA42D00D4B030 /* bridgeDemo */ = {
 			isa = PBXGroup;
 			children = (
+				572ED8E622FA64D3004A670A /* bridgeDemo.entitlements */,
 				5792222722F81BD0003BBA2D /* hhhhhBD.bundle */,
 				572DFCA322EAA42D00D4B030 /* AppDelegate.h */,
 				572DFCA422EAA42D00D4B030 /* AppDelegate.m */,
@@ -165,12 +173,12 @@
 				572DFCA722EAA42D00D4B030 /* ViewController.m */,
 				572DFCE322EAE92800D4B030 /* ViewController+Photo.h */,
 				572DFCE422EAE92800D4B030 /* ViewController+Photo.m */,
+				5792227022F94F42003BBA2D /* MyQRCodeTools.h */,
+				5792226F22F94F41003BBA2D /* MyQRCodeTools.m */,
 				572DFCD522EAA53D00D4B030 /* Person.h */,
 				572DFCD622EAA53D00D4B030 /* Person.m */,
 				572DFCDA22EACF7400D4B030 /* MyDataBaseTest.h */,
 				572DFCDB22EACF7400D4B030 /* MyDataBaseTest.m */,
-				572DFD6B22F3DA2400D4B030 /* MyQRCodeTools.h */,
-				572DFD6C22F3DA2400D4B030 /* MyQRCodeTools.m */,
 				572DFCDD22EADB2700D4B030 /* MyLocationTest.h */,
 				572DFCDE22EADB2700D4B030 /* MyLocationTest.m */,
 				5792222922F82B01003BBA2D /* LocationViewController.h */,
@@ -185,6 +193,10 @@
 				571AB02322F40C8F00F986CA /* NetworkTools.m */,
 				571AB02822F4241900F986CA /* MyRecordTools.h */,
 				571AB02922F4241900F986CA /* MyRecordTools.m */,
+				572ED8E022F9818A004A670A /* DFNetworkingManager.h */,
+				572ED8E122F9818A004A670A /* DFNetworkingManager.m */,
+				572ED8E322F98263004A670A /* MyJsonFormatter.h */,
+				572ED8E422F98263004A670A /* MyJsonFormatter.m */,
 				572DFCD822EACCB700D4B030 /* test.html */,
 				572DFCA922EAA42D00D4B030 /* Main.storyboard */,
 				572DFCAC22EAA42D00D4B030 /* Assets.xcassets */,
@@ -249,6 +261,7 @@
 				572DFC9D22EAA42D00D4B030 /* Frameworks */,
 				572DFC9E22EAA42D00D4B030 /* Resources */,
 				2BC6275D88269E71F01F9CCE /* [CP] Embed Pods Frameworks */,
+				4DD1C0E68FC272194A5A273E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -308,6 +321,11 @@
 				TargetAttributes = {
 					572DFC9F22EAA42D00D4B030 = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					572DFCB722EAA42E00D4B030 = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -386,6 +404,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-bridgeDemo/Pods-bridgeDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		4DD1C0E68FC272194A5A273E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-bridgeDemo/Pods-bridgeDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-bridgeDemo/Pods-bridgeDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-bridgeDemo/Pods-bridgeDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A697E4F70E7CFFE0DB91FD79 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -459,10 +494,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				572ED8E522F98263004A670A /* MyJsonFormatter.m in Sources */,
 				571AB02422F40C8F00F986CA /* NetworkTools.m in Sources */,
+				5792227122F94F42003BBA2D /* MyQRCodeTools.m in Sources */,
 				571AB02A22F4241900F986CA /* MyRecordTools.m in Sources */,
 				572DFD7022F3DB6A00D4B030 /* ImageViewController.m in Sources */,
 				572DFCDC22EACF7400D4B030 /* MyDataBaseTest.m in Sources */,
+				572ED8E222F9818B004A670A /* DFNetworkingManager.m in Sources */,
 				572DFCA822EAA42D00D4B030 /* ViewController.m in Sources */,
 				572DFCB322EAA42D00D4B030 /* main.m in Sources */,
 				572DFCD722EAA53D00D4B030 /* Person.m in Sources */,
@@ -472,7 +510,6 @@
 				571AB02122F3E0B400F986CA /* QRCodeViewController.m in Sources */,
 				572DFCDF22EADB2700D4B030 /* MyLocationTest.m in Sources */,
 				572DFCA522EAA42D00D4B030 /* AppDelegate.m in Sources */,
-				572DFD6D22F3DA2400D4B030 /* MyQRCodeTools.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,6 +681,7 @@
 			baseConfigurationReference = DCFF665FF3D5FC29EF780C89 /* Pods-bridgeDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = bridgeDemo/bridgeDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q84SWQ3M6P;
 				INFOPLIST_FILE = bridgeDemo/Info.plist;
@@ -663,6 +701,7 @@
 			baseConfigurationReference = F3B5FDE571CF986C225BC559 /* Pods-bridgeDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = bridgeDemo/bridgeDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q84SWQ3M6P;
 				INFOPLIST_FILE = bridgeDemo/Info.plist;

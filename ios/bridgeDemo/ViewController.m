@@ -13,13 +13,14 @@
 #import "MyDataBaseTest.h"
 #import <CoreLocation/CoreLocation.h>
 #import "ViewController+Photo.h"
-#import "MyQRCodeTools.h"
 #import "NetworkTools.h"
 #import <Reachability.h>
 #import <ContactsUI/ContactsUI.h>
 #import "MyRecordTools.h"
 #import "MyLocationTest.h"
+#import "MyQRCodeTools.h"
 #import "LocationViewController.h"
+#import "DFNetworkingManager.h"
 
 @interface ViewController ()<WKUIDelegate,CLLocationManagerDelegate,CNContactPickerDelegate,CNContactViewControllerDelegate,WKNavigationDelegate>
     
@@ -30,7 +31,7 @@
 @end
 
 @implementation ViewController{
-    DWKWebView * dwebview;
+    
 }
 
 - (void)viewDidLoad {
@@ -132,38 +133,46 @@
     
 - (void)initBridge{
     CGRect bounds=self.view.bounds;
-    dwebview=[[DWKWebView alloc] initWithFrame:CGRectMake(0, 25, bounds.size.width, bounds.size.height-25)];
-    [self.view addSubview:dwebview];
+    self.dwebview=[[DWKWebView alloc] initWithFrame:CGRectMake(0, 25, bounds.size.width, bounds.size.height-25)];
+    [self.view addSubview:self.dwebview];
     
-    [dwebview addJavascriptObject:[[MyDataBaseTest alloc] init] namespace:@"dbApi"];
-    [dwebview addJavascriptObject:[[ViewController alloc] init] namespace:@"photo"];
-    [dwebview addJavascriptObject:[[ViewController alloc] init] namespace:@"my"];
-    [dwebview addJavascriptObject:[[MyQRCodeTools alloc] init] namespace:@"cameraApi"];
-    [dwebview addJavascriptObject:[[MyLocationTest alloc] init] namespace:@"locationApi"];
+    [self.dwebview addJavascriptObject:[[MyDataBaseTest alloc] init] namespace:@"dbApi"];
+    [self.dwebview addJavascriptObject:[[ViewController alloc] init] namespace:@"photo"];
+    [self.dwebview addJavascriptObject:[[ViewController alloc] init] namespace:@"my"];
+    [self.dwebview addJavascriptObject:[[MyQRCodeTools alloc] init] namespace:@"cameraApi"];
+    [self.dwebview addJavascriptObject:[[MyLocationTest alloc] init] namespace:@"locationApi"];
+    [self.dwebview addJavascriptObject:[[DFNetworkingManager alloc] init] namespace:@"net"];
 //    [dwebview addJavascriptObject:[[LocationViewController alloc] init] namespace:@"locationApi"];
     // open debug mode, Release mode should disable this.
-    dwebview.allowsBackForwardNavigationGestures = YES;
-    [dwebview setDebugMode:true];
+    self.dwebview.allowsBackForwardNavigationGestures = YES;
+    [self.dwebview setDebugMode:true];
     
 //    [dwebview customJavascriptDialogLabelTitles:@{@"alertTitle":@"Notification",@"alertBtn":@"OK"}];
     
-    dwebview.navigationDelegate=self;
+    self.dwebview.navigationDelegate=self;
     
     // load test.html
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"hhhhhBD" ofType:@"bundle"];
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"hhhhhBD" ofType:@"bundle"];
+//    NSURL *baseURL = [NSURL fileURLWithPath:path];
+//    NSBundle *bundle = [NSBundle bundleWithPath:path];
+//    NSString * htmlPath = [bundle pathForResource:@"index" ofType:@"html"];
+//    NSString * htmlContent = [NSString stringWithContentsOfFile:htmlPath
+//                                                       encoding:NSUTF8StringEncoding
+//                                                          error:nil];
+//    [dwebview loadHTMLString:htmlContent baseURL:baseURL];
+    //
+    NSString *path = [[NSBundle mainBundle] bundlePath];
     NSURL *baseURL = [NSURL fileURLWithPath:path];
     NSBundle *bundle = [NSBundle bundleWithPath:path];
-    NSString * htmlPath = [bundle pathForResource:@"index" ofType:@"html"];
+    NSString * htmlPath = [bundle pathForResource:@"test" ofType:@"html"];
     NSString * htmlContent = [NSString stringWithContentsOfFile:htmlPath
                                                        encoding:NSUTF8StringEncoding
                                                           error:nil];
-    NSLog(@"%@",path);
-    NSLog(@"%@",htmlPath);
-    [dwebview loadHTMLString:htmlContent baseURL:baseURL];
+    [self.dwebview loadHTMLString:htmlContent baseURL:baseURL];
 }
     
 - (void)hehehe:(UIButton *)sender{
-    [dwebview callHandler:@"addValue" arguments:@[@3,@4] completionHandler:^(NSNumber* value){
+    [self.dwebview callHandler:@"addValue" arguments:@[@3,@4] completionHandler:^(NSNumber* value){
         UIAlertView *v = [[UIAlertView alloc]initWithTitle:@"回调结果" message:value.stringValue delegate:self cancelButtonTitle:@"cancle" otherButtonTitles:nil, nil];
         [v show];
     }];
@@ -233,13 +242,13 @@
           standardUserDefaults] setObject:userDefaultLanguages
          forKey:@"AppleLanguages"];
     }];
-    [dwebview callHandler:@"delegate.addValue" arguments:@[@3,@4] completionHandler:^(NSNumber* value){
+    [self.dwebview callHandler:@"delegate.addValue" arguments:@[@3,@4] completionHandler:^(NSNumber* value){
         dispatch_async(dispatch_get_main_queue(), ^{
             UIAlertView *v = [[UIAlertView alloc]initWithTitle:@"回调结果" message:value.stringValue delegate:self cancelButtonTitle:@"cancle" otherButtonTitles:nil, nil];
             [v show];
         });
     }];
-    [dwebview evaluateJavaScript:@"addValue(3,4)" completionHandler:^(id _Nullable result, NSError * _Nullable error) {
+    [self.dwebview evaluateJavaScript:@"addValue(3,4)" completionHandler:^(id _Nullable result, NSError * _Nullable error) {
         NSLog(@"result:%@,error:%@",result,error);
     }];
 }
