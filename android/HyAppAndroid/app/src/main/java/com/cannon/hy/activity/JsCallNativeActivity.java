@@ -55,7 +55,7 @@ public class JsCallNativeActivity extends TakePhotoActivity implements CameraApi
         mDWebView.addJavascriptObject(new IntentApi(this), "intentApi");
 
         mDWebView.loadUrl("file:///android_asset/dist/index.html");//js-call-native.html");
-//       mDWebView.loadUrl("file:///android_asset/js-call-native.html");
+   //     mDWebView.loadUrl("file:///android_asset/js-call-native.html");
 
         getSupportActionBar().hide();
 
@@ -67,18 +67,14 @@ public class JsCallNativeActivity extends TakePhotoActivity implements CameraApi
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            //setContent(intent.getStringExtra("content"));
+            setContent(intent.getStringExtra("content"));
         }
     };
 
+    //设置消息内容给webView
     public void setContent(String content){
         if(mDWebView!=null){
-            mDWebView.callHandler("setContent", new Object[]{content}, new OnReturnValue<Integer>() {
-                @Override
-                public void onValue(Integer retValue) {
-
-                }
-            });
+            //mDWebView.callHandler("setContent", new Object[]{content});
         }
 
     }
@@ -94,16 +90,17 @@ public class JsCallNativeActivity extends TakePhotoActivity implements CameraApi
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
-            //mDWebView.callHandler("");
-            return true;
+        if(keyCode==KeyEvent.KEYCODE_BACK){//监听返回键，如果可以后退就后退
+            if(mDWebView.canGoBack()){
+                mDWebView.goBack();
+                return true;
+            }
         }
         //继续执行父类其他点击事件
         return super.onKeyUp(keyCode, event);
     }
 
         /***************** 相机实现  *********/
-
 
     /**
      * 拍照

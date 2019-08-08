@@ -50,7 +50,7 @@ public class CustomerReceiver extends BroadcastReceiver {
 //                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP );
 //                context.startActivity(i);
                 Intent intent1 = new Intent("action.setContent");
-                intent1.putExtras(bundle);
+                intent1.putExtra("content",bundle.getString(JPushInterface.EXTRA_ALERT));
                 context.sendBroadcast(intent1);
 
             } else if (JPushInterface.ACTION_RICHPUSH_CALLBACK.equals(intent.getAction())) {
