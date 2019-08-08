@@ -38,12 +38,11 @@ dependencies {
     /*添加依赖 二维码扫描库 https://github.com/journeyapps/zxing-android-embedded */
     implementation 'com.journeyapps:zxing-android-embedded:3.5.0'
     implementation 'com.google.zxing:core:3.3.0'
-    implementation project(path:':takephoto_library')
+    implementation project(path: ':takephoto_library')
 
     /* 图片加载框架 */
     implementation 'com.github.bumptech.glide:glide:3.6.0'
     //annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
-
 
 
     /* 请求网络库 https://github.com/square/retrofit   https://github.com/square/okhttp */
