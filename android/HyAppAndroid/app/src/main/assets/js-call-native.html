@@ -53,10 +53,14 @@
     <div class="btn" onclick="createTable()">创建表</div>
     <div class="btn" onclick="addUser()">添加用户信息</div>
     <div id="queryUserListBtn" class="btn" onclick="queryUserList()">查询所有用户</div>
-    <div id="requestBtn" class="btn" onclick="requestGet()">Post网路请求</div>
+    <div id="requestBtn" class="btn" onclick="requestGet()">Get网路请求</div>
     <div id="selectContactBtn" class="btn" onclick="selectContact()">选择联系人</div>
     <div id="callPhoneBtn" class="btn" onclick="callPhone()">拨打电话</div>
     <div id="openPhoneViewBtn" class="btn" onclick="openPhoneView()">打开电话拨打界面</div>
+    <div id="startRecordingBtn" class="btn" onclick="startRecording()">开始录音</div>
+    <div id="stopRecordingBtn" class="btn" onclick="stopRecording()">停止录音</div>
+    <div id="playBtn" class="btn" onclick="play()">播放录音</div>
+    <div id="stopBtn" class="btn" onclick="stop()">停止播放</div>
 
     <input id="qrCodeET" class="editText" v-model="message" placeholder="edit me">
     <p>扫描结果 : {{ message }}</p>
@@ -129,7 +133,6 @@
            dsBridge.call("dbApi.querySQL",json,function (value) {
            document.getElementById("queryUserListBtn").innerHTML = (value);
         })
-
     }
 
     //网络请求
@@ -146,7 +149,7 @@
 
     //选择手机联系人
     function selectContact(){
-
+            dsBridge.call("intentApi.selectContact","选择联系人");
     }
 
     //拨打电话
@@ -165,6 +168,38 @@
         document.getElementById("qrCodeET").value = (content);
 
     })
+
+
+    var recorderManager;
+
+    //开始录音
+    function startRecording(){
+          dsBridge.call("audioApi.setOnStopListener","设置录音停止的回调",function (path) {
+            document.getElementById("stopRecordingBtn").innerHTML = (path);
+         });
+
+         dsBridge.call("audioApi.startRecording","开始录音");
+    }
+
+    //停止录音
+    function stopRecording(){
+            dsBridge.call("audioApi.stopRecording","停止录音");
+    }
+
+    //播放录音
+   function play(){
+         dsBridge.call("audioApi.setPlayStopListener","设置播放完成回调",function (value) {
+            alert(value)
+         });
+
+          var path = document.getElementById("stopRecordingBtn").innerHTML;
+          dsBridge.call("audioApi.play",path);
+    }
+
+    //停止播放
+   function stop(){
+          dsBridge.call("audioApi.stop","停止播放");
+    }
 
 </script>
 

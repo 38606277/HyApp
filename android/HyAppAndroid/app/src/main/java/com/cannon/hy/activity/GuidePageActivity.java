@@ -25,7 +25,7 @@ public class GuidePageActivity extends AppCompatActivity {
         View rootView = LayoutInflater.from(this).inflate(R.layout.activity_guide_page,null);
 
         final AlphaAnimation animation = new AlphaAnimation(0.3f, 1.0f);
-        animation.setDuration(2000);
+        animation.setDuration(1500);
         rootView.startAnimation(animation);
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -41,7 +41,7 @@ public class GuidePageActivity extends AppCompatActivity {
                     public void run() {
                        startActivity(new Intent(GuidePageActivity.this,JsCallNativeActivity.class));
                     }
-                },2000);
+                },1500);
             }
 
             @Override
