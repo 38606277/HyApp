@@ -13,6 +13,7 @@ const EditAddress = () => import(/* webpackChunkName: "EditAddress" */ '@/views/
 const AssetList = () => import(/* webpackChunkName: "AssetEdit" */ '@/views/AssetEdit/AssetList');
 const AssetView = () => import(/* webpackChunkName: "AssetView" */ '@/views/AssetEdit/AssetView');
 const AssetMap = () => import(/* webpackChunkName: "AssetEdit" */ '@/views/AssetEdit/AssetMap');
+const AssetFind = () => import(/* webpackChunkName: "AssetEdit" */ '@/views/AssetEdit/AssetFind');
 const OrderList = () => import(/* webpackChunkName: "OrderList" */ '@/views/OrderList/OrderList');
 
 Vue.use(Router);
@@ -21,6 +22,11 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'Login',
+      component: Login
+    },
+    {
+      path: '/Home',
       name: 'Home',
       component: Home
     },
@@ -94,6 +100,14 @@ export default new Router({
       path: '/AssetMap',
       name: 'AssetMap',
       component: AssetMap,
+      meta: {
+        fullScreen: true
+      }
+    },
+    {
+      path: '/AssetFind',
+      name: 'AssetFind',
+      component: AssetFind,
       meta: {
         fullScreen: true
       }

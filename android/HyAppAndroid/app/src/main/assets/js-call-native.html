@@ -53,6 +53,10 @@
     <div class="btn" onclick="createTable()">创建表</div>
     <div class="btn" onclick="addUser()">添加用户信息</div>
     <div id="queryUserListBtn" class="btn" onclick="queryUserList()">查询所有用户</div>
+    <div id="requestBtn" class="btn" onclick="requestGet()">Post网路请求</div>
+    <div id="selectContactBtn" class="btn" onclick="selectContact()">选择联系人</div>
+    <div id="callPhoneBtn" class="btn" onclick="callPhone()">拨打电话</div>
+    <div id="openPhoneViewBtn" class="btn" onclick="openPhoneView()">打开电话拨打界面</div>
 
     <input id="qrCodeET" class="editText" v-model="message" placeholder="edit me">
     <p>扫描结果 : {{ message }}</p>
@@ -62,6 +66,7 @@
 
 <script>
 
+    //拍照
     function takePhoto(){
           dsBridge.call("cameraApi.takePhoto","拍照",function (value) {
 
@@ -71,6 +76,7 @@
         })
     }
 
+    //选择图片
     function selectPhoto(){
           dsBridge.call("cameraApi.selectPhoto","选择图片",function (value) {
 
@@ -79,6 +85,7 @@
         })
     }
 
+     //选择多张图片
     function selectMultiplePhoto(){
          //参数 5 为图片张数
          dsBridge.call("cameraApi.selectMultiplePhoto","5",function (value) {
@@ -87,32 +94,35 @@
         })
     }
 
+    //扫描二维码
     function scanQrCode(){
           dsBridge.call("cameraApi.scanQrCode","二维码扫描",function (value) {
             document.getElementById("qrCodeET").value = (value);
         })
     }
 
-
+    //获取定位信息
     function getLocationInfo(){
           dsBridge.call("locationApi.getLocationInfo","获取定位信息",function (value) {
             document.getElementById("locationBtn").innerHTML = (value);
         })
     }
 
+    //创建数据库表
     function createTable(){
           dsBridge.call("dbApi.execSQL","create table if not exists USER (ID integer primary key autoincrement,ACCOUNT varchar,PASSWORD varchar,NAME varchar)",function (value) {
             alert("创建成功");
         })
     }
 
-
+    //插入数据
     function addUser(){
           dsBridge.call("dbApi.execSQL","INSERT INTO USER(ACCOUNT,PASSWORD,NAME) VALUES ('123456','abcdef','张三')",function (value) {
             alert("添加成功");
         })
     }
 
+    //查询数据
     function queryUserList(){
            var sql = {sql:"select * from USER", selectionArgs:"[]"};
            var json = JSON.stringify(sql);
@@ -122,9 +132,39 @@
 
     }
 
+    //网络请求
+    function requestGet(){
+            //url  请求地址
+            //method  请求的方式 get 或 post
+            //dataMap  请求的参数
+            var req = {url:"http://apis.juhe.cn/lottery/types", method:"get",dataMap:{"key":"e14e51963eac2538320abecc7f61dcb4"}};
+            var json = JSON.stringify(req);
+            dsBridge.call("requestApi.request",json,function (value) {
+            document.getElementById("requestBtn").innerHTML = (value);
+        })
+    }
+
+    //选择手机联系人
+    function selectContact(){
+
+    }
+
+    //拨打电话
+    function callPhone(){
+            dsBridge.call("intentApi.callPhone","18070075106");
+    }
+
+    //打开电话拨打界面
+    function openPhoneView(){
+            dsBridge.call("intentApi.openPhoneView","18070075106");
+    }
 
 
+    //注册Js方法给native调用
+    dsBridge.register('setContent', function (content) {
+        document.getElementById("qrCodeET").value = (content);
 
+    })
 
 </script>
 

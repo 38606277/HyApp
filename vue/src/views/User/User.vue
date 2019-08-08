@@ -22,10 +22,10 @@
       </van-col>
     </van-row>
     <van-cell-group class="user-group">
-      <van-cell title="全部订单"
+      <van-cell title="登录信息"
         icon="records"
         is-link
-        to="/OrderList" /></van-cell-group>
+        to="/Login" /></van-cell-group>
     <van-cell-group>
       <van-cell title="我的积分"
         icon="exchange"

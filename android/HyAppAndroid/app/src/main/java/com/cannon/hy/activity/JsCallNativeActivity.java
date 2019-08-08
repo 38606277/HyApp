@@ -1,9 +1,14 @@
 package com.cannon.hy.activity;
 
+import android.content.BroadcastReceiver;
+import android.content.ContentProvider;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.view.KeyEvent;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,8 +16,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.cannon.hy.R;
 import com.cannon.hy.api.CameraApi;
 import com.cannon.hy.api.DBApi;
+import com.cannon.hy.api.IntentApi;
 import com.cannon.hy.api.LocationApi;
+import com.cannon.hy.api.NetworkRequestApi;
 import com.cannon.hy.helper.DBHelper;
+import com.cannon.hy.manager.NotificationMgr;
 
 
 import org.devio.takephoto.app.TakePhoto;
@@ -26,6 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import wendu.dsbridge.DWebView;
+import wendu.dsbridge.OnReturnValue;
 
 public class JsCallNativeActivity extends TakePhotoActivity implements CameraApi.CameraActionListener {
     private DWebView mDWebView;
@@ -42,14 +51,33 @@ public class JsCallNativeActivity extends TakePhotoActivity implements CameraApi
         mDWebView.addJavascriptObject(new DBApi(this), "dbApi");
         mDWebView.addJavascriptObject(cameraApi = new CameraApi(this,this), "cameraApi");
         mDWebView.addJavascriptObject(new LocationApi(this), "locationApi");
+        mDWebView.addJavascriptObject(new NetworkRequestApi(), "requestApi");
+        mDWebView.addJavascriptObject(new IntentApi(this), "intentApi");
 
         mDWebView.loadUrl("file:///android_asset/dist/index.html");//js-call-native.html");
-       // mDWebView.loadUrl("file:///android_asset/js-call-native.html");
+   //     mDWebView.loadUrl("file:///android_asset/js-call-native.html");
 
         getSupportActionBar().hide();
 
+        //NotificationMgr.notify(this,"资产APP","这里是通知栏内容");
+        registerReceiver(broadcastReceiver,new IntentFilter("action.setContent"));
     }
 
+
+    BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            setContent(intent.getStringExtra("content"));
+        }
+    };
+
+    //设置消息内容给webView
+    public void setContent(String content){
+        if(mDWebView!=null){
+            //mDWebView.callHandler("setContent", new Object[]{content});
+        }
+
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -59,6 +87,20 @@ public class JsCallNativeActivity extends TakePhotoActivity implements CameraApi
         }
     }
 
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        if(keyCode==KeyEvent.KEYCODE_BACK){//监听返回键，如果可以后退就后退
+            if(mDWebView.canGoBack()){
+                mDWebView.goBack();
+                return true;
+            }
+        }
+        //继续执行父类其他点击事件
+        return super.onKeyUp(keyCode, event);
+    }
+
+        /***************** 相机实现  *********/
 
     /**
      * 拍照
@@ -112,14 +154,9 @@ public class JsCallNativeActivity extends TakePhotoActivity implements CameraApi
         cameraApi.callBackPath(pathList);
     }
 
-//    private void showImg(ArrayList<TImage> images) {
-//        Intent intent = new Intent(this, ResultActivity.class);
-//        intent.putExtra("images", images);
-//        startActivity(intent);
-//        finish();
-//    }
-
-
-
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(broadcastReceiver);
+    }
 }

@@ -1,6 +1,7 @@
 package com.cannon.hy.utils;
 import android.text.TextUtils;
 
+import com.cannon.hy.network.OnJsonResponseListener;
 import com.google.gson.Gson;
 import com.google.gson.JsonNull;
 import com.google.gson.JsonParseException;
@@ -73,6 +74,37 @@ public class JsonUtils {
     }
 
 
+    /**
+     * @MethodName : fromJson
+     * @Description : 用来将JSON串转为对象，此方法可用来转带泛型的集合
+     * @param json
+     * @return
+     */
+    public static <T> T fromJson(String json, OnJsonResponseListener<T> listener) {
+        return gson.fromJson(json , getResponseListenerTypeToAbs(listener));
+    }
 
+    /**
+     * 获取接口中的泛型类型
+     * @param listener
+     * @return
+     */
+    private static Type getResponseListenerTypeToImp(OnJsonResponseListener listener){
+        Type mInterFace = listener.getClass().getGenericInterfaces()[0];
+        ParameterizedType parameter = (ParameterizedType) mInterFace;
+        return $Gson$Types.canonicalize(parameter.getActualTypeArguments()[0]);
+    }
+
+
+    /**
+     * 获取抽象类中的泛型
+     * @param listener
+     * @return
+     */
+    private static Type getResponseListenerTypeToAbs(OnJsonResponseListener listener){
+        Type mInterFace = listener.getClass().getGenericSuperclass();
+        ParameterizedType parameter = (ParameterizedType) mInterFace;
+        return  $Gson$Types.canonicalize(parameter.getActualTypeArguments()[0]);
+    }
 }
 
