@@ -10,8 +10,11 @@
 #import <dsBridge/dsBridge.h>
 #import "MyJsonFormatter.h"
 
-@implementation DFNetworkingManager
+@interface DFNetworkingManager ()<NSCopying>
 
+@end
+
+@implementation DFNetworkingManager
 
 +(instancetype)shareManager{
     static DFNetworkingManager *instance;
@@ -27,6 +30,18 @@
     });
     return instance;
 }
+
++ (id)allocWithZone:(struct _NSZone *)zone
+{
+    return [DFNetworkingManager shareManager];
+}
+
+- (id) copyWithZone:(struct _NSZone *)zone
+{
+    return [DFNetworkingManager shareManager];
+}
+
+
 
 - (void)requestPost:(NSString *)msg :(JSCallback)completion{
     NSDictionary *dic = [MyJsonFormatter dictionaryWithJsonString:msg];

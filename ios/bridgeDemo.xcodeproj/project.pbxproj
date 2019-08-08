@@ -14,7 +14,6 @@
 		572DFCA822EAA42D00D4B030 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFCA722EAA42D00D4B030 /* ViewController.m */; };
 		572DFCAB22EAA42D00D4B030 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 572DFCA922EAA42D00D4B030 /* Main.storyboard */; };
 		572DFCAD22EAA42D00D4B030 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 572DFCAC22EAA42D00D4B030 /* Assets.xcassets */; };
-		572DFCB022EAA42D00D4B030 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 572DFCAE22EAA42D00D4B030 /* LaunchScreen.storyboard */; };
 		572DFCB322EAA42D00D4B030 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFCB222EAA42D00D4B030 /* main.m */; };
 		572DFCBD22EAA42E00D4B030 /* bridgeDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFCBC22EAA42E00D4B030 /* bridgeDemoTests.m */; };
 		572DFCC822EAA42E00D4B030 /* bridgeDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFCC722EAA42E00D4B030 /* bridgeDemoUITests.m */; };
@@ -27,6 +26,7 @@
 		572DFD7022F3DB6A00D4B030 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 572DFD6F22F3DB6A00D4B030 /* ImageViewController.m */; };
 		572ED8E222F9818B004A670A /* DFNetworkingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 572ED8E122F9818A004A670A /* DFNetworkingManager.m */; };
 		572ED8E522F98263004A670A /* MyJsonFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 572ED8E422F98263004A670A /* MyJsonFormatter.m */; };
+		576460F622FBBC5C001E8114 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 576460F522FBBC5C001E8114 /* Launch Screen.storyboard */; };
 		5792222822F81BD0003BBA2D /* hhhhhBD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5792222722F81BD0003BBA2D /* hhhhhBD.bundle */; };
 		5792222B22F82B01003BBA2D /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5792222A22F82B01003BBA2D /* LocationViewController.m */; };
 		5792222D22F831CE003BBA2D /* AMapLocationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5792222C22F831CE003BBA2D /* AMapLocationKit.framework */; };
@@ -71,7 +71,6 @@
 		572DFCA722EAA42D00D4B030 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		572DFCAA22EAA42D00D4B030 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		572DFCAC22EAA42D00D4B030 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		572DFCAF22EAA42D00D4B030 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		572DFCB122EAA42D00D4B030 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		572DFCB222EAA42D00D4B030 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		572DFCB822EAA42E00D4B030 /* bridgeDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bridgeDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,6 +97,7 @@
 		572ED8E322F98263004A670A /* MyJsonFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyJsonFormatter.h; sourceTree = "<group>"; };
 		572ED8E422F98263004A670A /* MyJsonFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyJsonFormatter.m; sourceTree = "<group>"; };
 		572ED8E622FA64D3004A670A /* bridgeDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = bridgeDemo.entitlements; sourceTree = "<group>"; };
+		576460F522FBBC5C001E8114 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		5792222722F81BD0003BBA2D /* hhhhhBD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = hhhhhBD.bundle; sourceTree = "<group>"; };
 		5792222922F82B01003BBA2D /* LocationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
 		5792222A22F82B01003BBA2D /* LocationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
@@ -199,8 +199,8 @@
 				572ED8E422F98263004A670A /* MyJsonFormatter.m */,
 				572DFCD822EACCB700D4B030 /* test.html */,
 				572DFCA922EAA42D00D4B030 /* Main.storyboard */,
+				576460F522FBBC5C001E8114 /* Launch Screen.storyboard */,
 				572DFCAC22EAA42D00D4B030 /* Assets.xcassets */,
-				572DFCAE22EAA42D00D4B030 /* LaunchScreen.storyboard */,
 				572DFCB122EAA42D00D4B030 /* Info.plist */,
 				572DFCB222EAA42D00D4B030 /* main.m */,
 			);
@@ -362,8 +362,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				576460F622FBBC5C001E8114 /* Launch Screen.storyboard in Resources */,
 				572DFCD922EACCB700D4B030 /* test.html in Resources */,
-				572DFCB022EAA42D00D4B030 /* LaunchScreen.storyboard in Resources */,
 				5792222822F81BD0003BBA2D /* hhhhhBD.bundle in Resources */,
 				572DFCAD22EAA42D00D4B030 /* Assets.xcassets in Resources */,
 				572DFCAB22EAA42D00D4B030 /* Main.storyboard in Resources */,
@@ -553,14 +553,6 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		572DFCAE22EAA42D00D4B030 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				572DFCAF22EAA42D00D4B030 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -681,6 +673,7 @@
 			baseConfigurationReference = DCFF665FF3D5FC29EF780C89 /* Pods-bridgeDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = bridgeDemo/bridgeDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q84SWQ3M6P;
@@ -701,6 +694,7 @@
 			baseConfigurationReference = F3B5FDE571CF986C225BC559 /* Pods-bridgeDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = bridgeDemo/bridgeDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q84SWQ3M6P;

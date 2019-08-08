@@ -53,7 +53,7 @@
     // 设置扫描范围（每一个取值0～1，以屏幕右上角为坐标原点）
     // 注：微信二维码的扫描范围是整个屏幕，这里并没有做处理（可不用设置）;
     // 如需限制扫描框范围，打开下一句注释代码并进行相应调整
-//    output.rectOfInterest = CGRectMake(0.05, 0.2, 0.7, 0.6);
+    output.rectOfInterest = CGRectMake(0, 0, 0.5, 0.5);
 //    output.rectOfInterest = CGRectMake((self.view.center.x - 100) / kScreenW, (self.view.center.y - 100) / self.view.bounds.size.height, 200 / kScreenW, 200 / self.view.bounds.size.height);
     // 添加会话输出
     [self.session addOutput:output];

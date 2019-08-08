@@ -30,6 +30,7 @@
 @property (nonatomic,strong) UIImageView *im;
 @property (nonatomic,strong) UILabel *l;
 @property (nonatomic,strong) NSDictionary *pushDic;
+@property (nonatomic,strong) UIImageView *launchScreenImageView;
 @end
 
 @implementation ViewController{
@@ -40,6 +41,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initBridge];
+    [self addLaunch];
     UIImageView *im = [[UIImageView alloc]initWithFrame:CGRectMake(0, 400, 100, 100)];
     im.contentMode = UIViewContentModeScaleAspectFill;
     [self.view addSubview:im];
@@ -146,7 +148,7 @@
     [self.dwebview addJavascriptObject:[[ViewController alloc] init] namespace:@"my"];
     [self.dwebview addJavascriptObject:[[MyQRCodeTools alloc] init] namespace:@"cameraApi"];
     [self.dwebview addJavascriptObject:[[MyLocationTest alloc] init] namespace:@"locationApi"];
-    [self.dwebview addJavascriptObject:[[DFNetworkingManager alloc] init] namespace:@"net"];
+//    [self.dwebview addJavascriptObject:[[DFNetworkingManager alloc] init] namespace:@"net"];
 //    [dwebview addJavascriptObject:[[LocationViewController alloc] init] namespace:@"locationApi"];
     // open debug mode, Release mode should disable this.
     self.dwebview.allowsBackForwardNavigationGestures = YES;
@@ -157,23 +159,27 @@
     self.dwebview.navigationDelegate=self;
     
     // load test.html
-//    NSString *path = [[NSBundle mainBundle] pathForResource:@"hhhhhBD" ofType:@"bundle"];
-//    NSURL *baseURL = [NSURL fileURLWithPath:path];
-//    NSBundle *bundle = [NSBundle bundleWithPath:path];
-//    NSString * htmlPath = [bundle pathForResource:@"index" ofType:@"html"];
-//    NSString * htmlContent = [NSString stringWithContentsOfFile:htmlPath
-//                                                       encoding:NSUTF8StringEncoding
-//                                                          error:nil];
-//    [dwebview loadHTMLString:htmlContent baseURL:baseURL];
-    //
-    NSString *path = [[NSBundle mainBundle] bundlePath];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"hhhhhBD" ofType:@"bundle"];
     NSURL *baseURL = [NSURL fileURLWithPath:path];
     NSBundle *bundle = [NSBundle bundleWithPath:path];
-    NSString * htmlPath = [bundle pathForResource:@"test" ofType:@"html"];
+    NSString * htmlPath = [bundle pathForResource:@"index" ofType:@"html"];
     NSString * htmlContent = [NSString stringWithContentsOfFile:htmlPath
                                                        encoding:NSUTF8StringEncoding
                                                           error:nil];
     [self.dwebview loadHTMLString:htmlContent baseURL:baseURL];
+    //
+//    NSString *path = [[NSBundle mainBundle] bundlePath];
+//    NSURL *baseURL = [NSURL fileURLWithPath:path];
+//    NSBundle *bundle = [NSBundle bundleWithPath:path];
+//    NSString * htmlPath = [bundle pathForResource:@"test" ofType:@"html"];
+//    NSString * htmlContent = [NSString stringWithContentsOfFile:htmlPath
+//                                                       encoding:NSUTF8StringEncoding
+//                                                          error:nil];
+//    [self.dwebview loadHTMLString:htmlContent baseURL:baseURL];
+}
+
+- (void)addLaunch{
+    [[UIApplication sharedApplication].keyWindow addSubview:self.launchScreenImageView];
 }
     
 - (void)hehehe:(UIButton *)sender{
@@ -259,6 +265,7 @@
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
+    [self.launchScreenImageView removeFromSuperview];
     NSNumber *first = self.pushDic[@"first"];
     NSNumber *second = self.pushDic[@"second"];
     if ([webView isKindOfClass:[DWKWebView class]]) {
@@ -270,6 +277,15 @@
             }];
         }
     }
+}
+
+- (UIImageView *)launchScreenImageView{
+    if (!_launchScreenImageView) {
+        _launchScreenImageView = [[UIImageView alloc]initWithFrame:self.view.frame];
+        _launchScreenImageView.image = [UIImage imageNamed:@"timg"];
+        _launchScreenImageView.contentMode = UIViewContentModeScaleAspectFill;
+    }
+    return _launchScreenImageView;
 }
 
 @end

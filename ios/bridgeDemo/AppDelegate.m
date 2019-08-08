@@ -54,6 +54,10 @@ NSString * const DemoPushNotifacationName = @"DemoPushNotifacationName";
         // NSSet<UIUserNotificationCategory *> *categories for iOS8 and iOS9
     }
     [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
+    [JPUSHService registrationIDCompletionHandler:^(int resCode, NSString *registrationID) {
+        NSLog(@"++++++++++%@---------%d",registrationID,resCode);
+    }];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getChangeUID:) name:kJPFNetworkDidLoginNotification object:nil];
 }
 
 - (ViewController *)selectVC{
