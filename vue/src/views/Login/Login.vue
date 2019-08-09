@@ -11,7 +11,7 @@
               <van-button type="primary" size="small" @click="login" :loading="loading">登陆</van-button>
             </van-col>
             <van-col span="12" class="btn">
-              <van-button type="default" size="small" @click="reg">注册</van-button>
+              <van-button type="default" style="font-size:28px" size="small" @click="reg">注册</van-button>
             </van-col>
           </van-row>
         </van-cell>
