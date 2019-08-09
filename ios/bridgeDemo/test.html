@@ -43,6 +43,7 @@
 <div class="btn" onclick="startRecord()">startRecord</div>
 <div class="btn" onclick="endRecord()">endRecord</div>
 <div class="btn" onclick="playRecord()">playRecord</div>
+<div class="btn" onclick="requestPost()">requestPost</div>
 <!--<div class="btn" onclick="callAsynSwift()">Async call(swift)</div>-->
 <!--<div class="btn" onclick="callNoArgSyn()">Sync call without argument</div>-->
 <!--<div class="btn" onclick="callNoArgAsyn()">Async call without argument</div>-->
@@ -87,7 +88,7 @@
     }
 
     function QRCode() {
-        dsBridge.call("QRCode.pushVC","hello", function (v) {
+        dsBridge.call("cameraApi.scanQrCode","hello", function (v) {
                       alert(v)
                       })
     }
@@ -124,6 +125,11 @@ function endRecord() {
 
 function playRecord() {
     dsBridge.call("my.playRecord","hello", function (v) {
+                  })
+}
+
+function requestPost() {
+    dsBridge.call("net.postRequest","{\"url\":\"parameters\",}", function (v) {
                   })
 }
 
@@ -179,7 +185,7 @@ function playRecord() {
     dsBridge.register('addValue', function (r, l) {
         return r + l;
     })
-    dsBridge.register('delegate.addValue', function (r, l) {
+    dsBridge.register('notifation', function (v) {
         return r + l;
     })
 

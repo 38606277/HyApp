@@ -7,15 +7,19 @@
 //
 
 #import "QRCodeViewController.h"
-#import "MyQRCodeTools.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface QRCodeViewController ()
+#define kScreenW [UIScreen mainScreen].bounds.size.width
+#define kScreenH [UIScreen mainScreen].bounds.size.height
+@interface QRCodeViewController ()<AVCaptureMetadataOutputObjectsDelegate,AVCaptureVideoDataOutputSampleBufferDelegate,CAAnimationDelegate>
+
 /** 回话对象属性*/
 @property (nonatomic, strong) AVCaptureSession *session;
-
 /** 摄像头预览图层*/
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *previewLayer;
+@property (nonatomic,strong) AVCaptureVideoDataOutput *videoDataOutput;
+@property (nonatomic,strong) CALayer *scanLineLayer;
+
 @end
 
 @implementation QRCodeViewController
@@ -24,7 +28,6 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     // Do any additional setup after loading the view.
-    MyQRCodeTools *tools = [[MyQRCodeTools alloc]init];
     // 创建回话对象
     self.session = [[AVCaptureSession alloc] init];
     
@@ -40,13 +43,18 @@
     
     // 添加会话输入
     [self.session addInput:input];
-    
     // 创建输出对象
     AVCaptureMetadataOutput *output = [[AVCaptureMetadataOutput alloc] init];
-    
+    self.videoDataOutput = [[AVCaptureVideoDataOutput alloc] init];
+    [_videoDataOutput setSampleBufferDelegate:self queue:dispatch_get_main_queue()];
+    [_session addOutput:_videoDataOutput];
     // 设置输出对象代理
     [output setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
-    
+    // 设置扫描范围（每一个取值0～1，以屏幕右上角为坐标原点）
+    // 注：微信二维码的扫描范围是整个屏幕，这里并没有做处理（可不用设置）;
+    // 如需限制扫描框范围，打开下一句注释代码并进行相应调整
+    output.rectOfInterest = CGRectMake(0, 0, 0.5, 0.5);
+//    output.rectOfInterest = CGRectMake((self.view.center.x - 100) / kScreenW, (self.view.center.y - 100) / self.view.bounds.size.height, 200 / kScreenW, 200 / self.view.bounds.size.height);
     // 添加会话输出
     [self.session addOutput:output];
     
@@ -66,6 +74,22 @@
     
     // 启动会话
     [self.session startRunning];
+    
+    // 扫描线+动画
+    self.scanLineLayer = [CALayer layer];
+    self.scanLineLayer.backgroundColor = [UIColor redColor].CGColor;
+    self.scanLineLayer.bounds = CGRectMake(0, 0, 200, 1);
+    self.scanLineLayer.position = self.view.center;
+    [self.previewLayer addSublayer:self.scanLineLayer];
+    
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
+    animation.duration = 2;
+    animation.delegate = self;
+    animation.fromValue = @(CGPointMake(self.view.center.x, self.view.center.y - 100));
+    animation.toValue = @(CGPointMake(self.view.center.x, self.view.center.y + 100));
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    animation.repeatCount = MAXFLOAT;
+    [self.scanLineLayer addAnimation:animation forKey:@"scanLineLayerPosition"];
 }
 
 - (void)captureOutput:(AVCaptureOutput *)output didOutputMetadataObjects:(NSArray<__kindof AVMetadataObject *> *)metadataObjects fromConnection:(AVCaptureConnection *)connection {
@@ -81,13 +105,57 @@
         AVMetadataMachineReadableCodeObject *obj = metadataObjects.firstObject;
         // 取出二维码扫描到的内容
         NSLog(@"二维码内容：：：%@",obj.stringValue);
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"QRCode" object:obj.stringValue];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"QRCode" object:obj.stringValue];
+        self.resultBlock(obj.stringValue, YES);
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
-// 播放音效成功回调
-void soundCompleteCallback (){
-    
-}
+
+//- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
+//    // 这个方法会时时调用，但内存很稳定
+//    CFDictionaryRef metadataDict = CMCopyDictionaryOfAttachments(NULL,sampleBuffer, kCMAttachmentMode_ShouldPropagate);
+//    NSDictionary *metadata = [[NSMutableDictionary alloc] initWithDictionary:(__bridge NSDictionary*)metadataDict];
+//    CFRelease(metadataDict);
+//    NSDictionary *exifMetadata = [[metadata objectForKey:(NSString *)kCGImagePropertyExifDictionary] mutableCopy];
+//    float brightnessValue = [[exifMetadata objectForKey:(NSString *)kCGImagePropertyExifBrightnessValue] floatValue];
+//    NSLog(@"%f",brightnessValue);
+//    if (brightnessValue < - 1) {
+//        [self.view addSubview:self.lightBtn];
+//    } else {
+//        if (self.isSelectedFlashlightBtn == NO) {
+//            [self removeFlashlightBtn];
+//        }
+//    }
+//}
+
+//- (void)lightBtnAction:(UIButton *)button {
+//    if (button.selected == NO) {
+//        /** 打开手电筒 */
+//        AVCaptureDevice *captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+//        NSError *error = nil;
+//        if ([captureDevice hasTorch]) {
+//            BOOL locked = [captureDevice lockForConfiguration:&error];
+//            if (locked) {
+//                captureDevice.torchMode = AVCaptureTorchModeOn;
+//                [captureDevice unlockForConfiguration];
+//            }
+//        }
+//        self.isSelectedFlashlightBtn = YES;
+//        button.selected = YES;
+//    } else {
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)),                  dispatch_get_main_queue(), ^{
+//            AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+//            if ([device hasTorch]) {
+//                [device lockForConfiguration:nil];
+//                [device setTorchMode: AVCaptureTorchModeOff];
+//                [device unlockForConfiguration];
+//            }
+//            self.isSelectedFlashlightBtn = NO;
+//            self.flashlightBtn.selected = NO;
+//            [self.flashlightBtn removeFromSuperview];
+//        });
+//
+//    }
+//}
 
 @end

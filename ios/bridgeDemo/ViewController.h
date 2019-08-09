@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <dsBridge/dsBridge.h>
 
 @interface ViewController : UIViewController
 
+@property (nonatomic,strong) DWKWebView * dwebview;
 
 @end
 

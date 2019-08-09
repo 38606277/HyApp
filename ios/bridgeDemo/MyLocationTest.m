@@ -8,73 +8,77 @@
 
 #import "MyLocationTest.h"
 #import <dsBridge/dsBridge.h>
-#import <CoreLocation/CoreLocation.h>//引入Corelocation框架
+#import <AMapFoundationKit/AMapFoundationKit.h>
+#import <AMapLocationKit/AMapLocationKit.h>
 
-@interface MyLocationTest ()< CLLocationManagerDelegate>
-    
-@property (nonatomic, strong) CLLocationManager *locationManager;//设置manager
-@property (nonatomic, strong) NSString *currentCity;
+@interface MyLocationTest ()
 
+@property (nonatomic,strong) AMapLocationManager *locationManager;
+@property (nonatomic,strong) JSCallback singleBlock;
 @end
+
 
 @implementation MyLocationTest
 
--(void)needLocation:(NSString *)msg :(JSCallback)compltetion{
-    if ([CLLocationManager locationServicesEnabled]) {//监测权限设置
-        self.locationManager = [[CLLocationManager alloc]init];
-        self.locationManager.delegate = self;//设置代理
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;//设置精度
-        self.locationManager.distanceFilter = 1000.0f;//距离过滤
-        [self.locationManager requestAlwaysAuthorization];//位置权限申请
-        [self.locationManager startUpdatingLocation];//开始定位
-    }
-}
-
-
-#pragma mark location代理
--(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"您还未开启定位服务，是否需要开启？" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-    }];
-    UIAlertAction *queren = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        NSURL *setingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-        [[UIApplication sharedApplication] openURL:setingsURL];
-    }];
-    [alert addAction:cancel];
-    [alert addAction:queren];
+-(void)getLocationInfo:(NSString *)msg :(JSCallback)compltetion{
+    [AMapServices sharedServices].apiKey =@"120593b180e6b7f9ae272d16c05f7170";
+    // 带逆地理信息的一次定位（返回坐标和地址信息）
+    self.locationManager = [[AMapLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
+    //   定位超时时间，最低2s，此处设置为2s
+    self.locationManager.locationTimeout =2;
+    //   逆地理请求超时时间，最低2s，此处设置为2s
+    self.locationManager.reGeocodeTimeout = 2;
     
-}
+    // 带逆地理信息的一次定位（返回坐标和地址信息）
+    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+    //   定位超时时间，最低2s，此处设置为10s
+    self.locationManager.locationTimeout =10;
+    //   逆地理请求超时时间，最低2s，此处设置为10s
+    self.locationManager.reGeocodeTimeout = 10;
     
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
-    // [self.locationManager stopUpdatingLocation];//停止定位
-    //地理反编码
-    CLLocation *currentLocation = [locations lastObject];
-    CLGeocoder *geoCoder = [[CLGeocoder alloc]init];
-    //当系统设置为其他语言时，可利用此方法获得中文地理名称
-    NSMutableArray
-    *userDefaultLanguages = [[NSUserDefaults standardUserDefaults]objectForKey:@"AppleLanguages"];
-    // 强制 成 简体中文
-    [[NSUserDefaults standardUserDefaults] setObject:[NSArray arrayWithObjects:@"zh-hans", nil]forKey:@"AppleLanguages"];
-    [geoCoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
-        if (placemarks.count > 0) {
-            CLPlacemark *placeMark = placemarks[0];
-            NSString *city = placeMark.locality;
-            if (!city) {
-                self.currentCity = @"⟳定位获取失败,点击重试";
-            } else {
-                self.currentCity = placeMark.locality ;//获取当前城市
-                
+    self.locationManager.distanceFilter = 200;
+    [self.locationManager startUpdatingLocation];
+    [self.locationManager setLocatingWithReGeocode:YES];
+    [self.locationManager startUpdatingLocation];
+    
+    
+    [self.locationManager requestLocationWithReGeocode:NO completionBlock:^(CLLocation *location, AMapLocationReGeocode *regeocode, NSError *error) {
+
+        if (error)
+        {
+            NSLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
+            if (error.code == AMapLocationErrorLocateFailed)
+            {
+                return;
             }
-            
-        } else if (error == nil && placemarks.count == 0 ) {
-        } else if (error) {
-            self.currentCity = @"⟳定位获取失败,点击重试";
         }
-        // 还原Device 的语言
-        [[NSUserDefaults
-          standardUserDefaults] setObject:userDefaultLanguages
-         forKey:@"AppleLanguages"];
+        NSLog(@"location:%@", location);
+        
+        if (regeocode)
+        {
+            NSLog(@"reGeocode:%@", regeocode);
+        }
     }];
+    self.singleBlock = compltetion;
+}
+
+- (void)amapLocationManager:(AMapLocationManager *)manager doRequireLocationAuth:(CLLocationManager*)locationManager{
+    [locationManager requestAlwaysAuthorization];
+}
+
+- (void)amapLocationManager:(AMapLocationManager *)manager didUpdateLocation:(CLLocation *)location reGeocode:(AMapLocationReGeocode *)reGeocode
+{
+    NSLog(@"location:{lat:%f; lon:%f; accuracy:%f}", location.coordinate.latitude, location.coordinate.longitude, location.horizontalAccuracy);
+    if (reGeocode)
+    {
+        NSLog(@"reGeocode:%@", reGeocode);
+    }
+    [self.locationManager stopUpdatingLocation];
+    NSString *result = [NSString stringWithFormat:@"[%f,%f]",location.coordinate.latitude,location.coordinate.longitude];
+    self.singleBlock(result, YES);
+
 }
 
 @end
